@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public class CategoryController {
     public String list(Model model) {
         List<Category> cs = categoryService.list();
         model.addAttribute("cs",cs);
+        System.out.println("-----");
         return "admin/listCategory";
     }
 }
