@@ -2,6 +2,7 @@ package com.how2java.youyi.controller;
 
 import com.how2java.youyi.pojo.Category;
 import com.how2java.youyi.service.CategoryService;
+import com.how2java.youyi.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,12 @@ public class CategoryController {
     CategoryService categoryService;
 
     @RequestMapping("admin_category_list")
-    public String list(Model model) {
-        List<Category> cs = categoryService.list();
+    public String list(Model model, Page page) {
+        List<Category> cs = categoryService.list(page);
+        int total = categoryService.total();
+        page.setTotal(total);
         model.addAttribute("cs",cs);
-        System.out.println("-----");
+        model.addAttribute("page",page);
         return "admin/listCategory";
     }
 }
