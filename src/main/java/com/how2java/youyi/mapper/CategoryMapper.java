@@ -6,7 +6,9 @@ import java.util.List;
 /**
  * Created by melon on 18-1-5.
  */
+
 public interface CategoryMapper {
      List<Category> list(Page page);
      int total();
+     void add(Category category);
 }

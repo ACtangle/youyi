@@ -20,7 +20,7 @@ public class Category {
         return this.name;
     }
 
-    public void setId(String name) {
+    public void setName(String name) {
         //trim方法去掉属性字段左右边缘的空格或者制表符
         this.name = name == null?null:name.trim();
     }
