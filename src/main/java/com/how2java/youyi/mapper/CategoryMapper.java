@@ -12,4 +12,6 @@ public interface CategoryMapper {
      int total();
      void add(Category category);
      void delete(int id);
+     Category get(int id);
+     void update(Category category);
 }
