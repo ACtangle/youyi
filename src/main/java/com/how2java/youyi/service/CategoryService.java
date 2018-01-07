@@ -7,8 +7,9 @@ import java.util.List;
  * Created by melon on 18-1-5.
  */
 public interface CategoryService {
-    List<Category> list(Page page);
-    int total();
+//    List<Category> list(Page page);
+//    int total();
+    List<Category> list();
     void add(Category category);
     void delete(int id);
     Category get(int id);
