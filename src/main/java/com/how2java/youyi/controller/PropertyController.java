@@ -58,6 +58,7 @@ public class PropertyController {
     @RequestMapping("admin_property_list")
     public String list(int cid,Model model,Page page) {
         Category c = categoryService.get(cid);
+        //下面两句顺序不能颠倒,否则将引起空指针异常造成属性管理分页失败
         PageHelper.offsetPage(page.getStart(),page.getCount());
         List<Property> ps= propertyService.list(cid);
         int total = (int)new PageInfo<>(ps).getTotal();
