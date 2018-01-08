@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     public void setCategory(Product p){
         int cid = p.getCid();
         Category c = categoryService.get(cid);
-        p.setCategory(c);
+//        p.setCategory(c);
     }
     @Override
     public Product get(int pid) {
