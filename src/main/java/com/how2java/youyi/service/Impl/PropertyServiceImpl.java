@@ -41,6 +41,7 @@ public class PropertyServiceImpl implements PropertyService{
     @Override
     public List list(int cid) {
         PropertyExample propertyExample = new PropertyExample();
+        //防止重复
         propertyExample.createCriteria().andCidEqualTo(cid);
         propertyExample.setOrderByClause("id desc");
         return propertyMapper.selectByExample(propertyExample);

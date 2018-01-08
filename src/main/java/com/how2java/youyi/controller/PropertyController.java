@@ -42,7 +42,7 @@ public class PropertyController {
     @RequestMapping("admin_property_edit")
     public String edit(Model model,int id) {
         Property property = propertyService.get(id);
-        Category category = categoryService.get(property.getId());
+        Category category = categoryService.get(property.getCid());
         property.setCategory(category);
         model.addAttribute("p",property);
         return "admin/editProperty";
@@ -62,6 +62,7 @@ public class PropertyController {
         PageHelper.offsetPage(page.getStart(),page.getCount());
         int total = (int)new PageInfo<>(ps).getTotal();
         page.setTotal(total);
+        page.setParam("&cid="+c.getId());
         model.addAttribute("ps",ps);
         model.addAttribute("c",c);
         model.addAttribute("page",page);
