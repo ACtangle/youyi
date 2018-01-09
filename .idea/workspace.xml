@@ -37,54 +37,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="listProductImage.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProductImage.jsp">
+      <file leaf-file-name="listProduct.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProduct.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="102" column="40" lean-forward="true" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+            <state relative-caret-position="112">
+              <caret line="64" column="90" lean-forward="false" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductImageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductImageController.java">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="83" column="48" lean-forward="false" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
+            <state relative-caret-position="208">
+              <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#768#769#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductImageService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductImageService.java">
+      <file leaf-file-name="ProductService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-31">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="128">
+              <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1848#1849#0" expanded="true" />
+                <element signature="e#1914#1915#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductImageServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductImageServiceImpl.java">
+      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1036#1037#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
-                <element signature="e#1140#1141#0" expanded="true" />
-                <element signature="e#1193#1194#0" expanded="true" />
-                <element signature="e#1257#1258#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-161">
+              <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,21 +142,16 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProperty.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/util/Page.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listCategory.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProduct.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductImageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/util/MybatisGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/PropertyMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/CategoryMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/OrderMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Property.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/ProductMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/ReviewMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/PropertyController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
@@ -169,6 +173,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductImageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductImageService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ProductImageMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProduct.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductController.java" />
       </list>
     </option>
   </component>
@@ -284,6 +293,10 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -360,6 +373,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="youyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="youyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="youyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="youyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -916,12 +959,12 @@
       <workItem from="1515428366529" duration="4045000" />
       <workItem from="1515432471738" duration="253000" />
       <workItem from="1515432977102" duration="3340000" />
-      <workItem from="1515509631024" duration="8493000" />
+      <workItem from="1515509631024" duration="10806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82004000" />
+    <option name="totallyTimeSpent" value="84317000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1015,15 +1058,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/mapper/PropertyMapper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/mapper/OrderMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/mapper/ProductMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1041,14 +1076,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/mapper/ProductMapper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/mapper/ReviewMapper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/mapper/UserMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="60" column="27" lean-forward="false" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/mapper/CategoryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -1242,48 +1269,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/ProductExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-          <folding>
-            <element signature="e#432#433#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/mapper/ProductImageMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProduct.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="76" column="53" lean-forward="false" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductImageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1303,22 +1292,6 @@
         <state relative-caret-position="391">
           <caret line="48" column="31" lean-forward="true" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductImageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1036#1037#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
-            <element signature="e#1140#1141#0" expanded="true" />
-            <element signature="e#1193#1194#0" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1346,16 +1319,6 @@
             <marker date="1515429140859" expanded="true" signature="2539:2601" ph="insert into category... " />
             <marker date="1515429140859" expanded="true" signature="3153:3308" ph="update categ... " />
             <marker date="1515429140859" expanded="true" signature="3409:3499" ph="update categ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductImageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="83" column="48" lean-forward="false" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1394,6 +1357,101 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="102" column="40" lean-forward="true" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/ProductExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductImageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="83" column="48" lean-forward="false" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductImageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductImageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1257#1258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/listProduct.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="64" column="90" lean-forward="false" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/pojo/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+          <folding>
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/service/Impl/ProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1848#1849#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/how2java/youyi/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
           <folding />
         </state>
       </provider>

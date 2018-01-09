@@ -1,5 +1,7 @@
 package com.how2java.youyi.pojo;
 
+
+
 import java.util.Date;
 
 public class Product {
@@ -21,6 +23,8 @@ public class Product {
 
     private Category category;
 
+    private ProductImage firstProductImage;
+
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -28,6 +32,14 @@ public class Product {
     public Category getCategory() {
 
         return category;
+    }
+
+    public void setFirstProductImage(ProductImage firstProductImage) {
+        this.firstProductImage = firstProductImage;
+    }
+
+    public ProductImage getFirstProductImage() {
+        return firstProductImage;
     }
 
     public Integer getId() {

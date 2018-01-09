@@ -4,7 +4,9 @@ import com.how2java.youyi.mapper.ProductMapper;
 import com.how2java.youyi.pojo.Category;
 import com.how2java.youyi.pojo.Product;
 import com.how2java.youyi.pojo.ProductExample;
+import com.how2java.youyi.pojo.ProductImage;
 import com.how2java.youyi.service.CategoryService;
+import com.how2java.youyi.service.ProductImageService;
 import com.how2java.youyi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +23,16 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
     @Autowired
     CategoryService categoryService;
-    @Override
-    public List<Product> list(){
+    @Autowired
+    ProductImageService productImageService;
+
+    public List<Product> list(int cid){
         ProductExample productExample = new ProductExample();
         productExample.setOrderByClause("id desc");
-        return productMapper.selectByExample(productExample);
+        List result = productMapper.selectByExample(productExample);
+        setCategory(result);
+        setFirstProductImage(result);
+        return result;
     }
 
     @Override
@@ -51,11 +58,27 @@ public class ProductServiceImpl implements ProductService {
     public Product get(int pid) {
         Product p =productMapper.selectByPrimaryKey(pid);
         setCategory(p);
+        setFirstProductImage(p);
         return p;
     }
 
     @Override
     public void update(Product product) {
         productMapper.updateByPrimaryKeySelective(product);
+    }
+
+    @Override
+    public void setFirstProductImage(Product product) {
+        List<ProductImage> pis = productImageService.list(product.getId(),ProductImageService.type_single);
+        if(!pis.isEmpty()) {
+            ProductImage productImage = pis.get(0);
+            product.setFirstProductImage(productImage);
+        }
+    }
+
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
     }
 }
