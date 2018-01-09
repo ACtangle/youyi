@@ -67,4 +67,6 @@ public class ProductController {
         productService.update(product);
         return "redirect:admin_product_list?cid="+product.getCid();
     }
+
+
 }
