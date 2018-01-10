@@ -32,7 +32,7 @@ public class PropertyValueServiceImpl implements PropertyValueService {
             if(null == pv){
                 pv = new PropertyValue();
                 pv.setPid(product.getId());
-                pv.setPid(pt.getId());
+                pv.setPtid(pt.getId());
                 propertyValueMapper.insert(pv);
             }
         }

@@ -29,8 +29,9 @@ public class PropertyValueController {
     public String edit(Model model,int pid) {
         Product product = productService.get(pid);
         propertyValueService.init(product);
-        List<PropertyValue> list = propertyValueService.list(pid);
-        model.addAttribute("pvs",list);
+        List<PropertyValue> pvs = propertyValueService.list(pid);
+        model.addAttribute("p",product);
+        model.addAttribute("pvs",pvs);
         return "admin/editPropertyValue";
     }
 
