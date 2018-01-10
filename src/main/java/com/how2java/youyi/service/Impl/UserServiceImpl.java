@@ -18,6 +18,26 @@ public class UserServiceImpl implements UserService{
     UserMapper userMapper;
 
     @Override
+    public void add(User u) {
+        userMapper.insert(u);
+    }
+
+    @Override
+    public void delete(int id) {
+        userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void update(User u) {
+        userMapper.updateByPrimaryKeySelective(u);
+    }
+
+    @Override
+    public User get(int id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public List<User> list() {
         UserExample userExample = new UserExample();
         userExample.setOrderByClause("id desc");
