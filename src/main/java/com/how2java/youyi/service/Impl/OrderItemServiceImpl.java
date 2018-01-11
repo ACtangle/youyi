@@ -73,7 +73,6 @@ public class OrderItemServiceImpl implements OrderItemService{
         o.setTotal(total);
         o.setTotalNumber(totalNumber);
         o.setOrderItems(ois);
-
     }
 
     public void setProduct(List<OrderItem> ois){

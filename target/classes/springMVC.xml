@@ -31,4 +31,12 @@
 
     <!-- 对上传文件的解析-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!--拦截器定义-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="com.how2java.youyi.interceptor.AuthoriazationInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
