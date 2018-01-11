@@ -7,5 +7,5 @@ import com.how2java.youyi.pojo.Admin;
  */
 public interface AdminService {
     Admin get(int id);
-    Admin get(String username);
+    Admin get(String username,String password);
 }

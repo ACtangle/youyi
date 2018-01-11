@@ -2,6 +2,8 @@ package com.how2java.youyi.mapper;
 
 import com.how2java.youyi.pojo.Admin;
 import com.how2java.youyi.pojo.AdminExample;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,5 +25,5 @@ public interface AdminMapper {
 
     int updateByPrimaryKey(Admin record);
 
-    Admin selectByUsername(String username);
+    Admin selectByUsername(@Param("username") String username, @Param("password") String password);
 }

@@ -59,9 +59,9 @@
     from admin
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByUsername" parameterType="java.lang.String" resultType="com.how2java.youyi.pojo.Admin">
+  <select id="selectByUsername"  resultType="com.how2java.youyi.pojo.Admin">
     select * from admin
-    where username = #{username,jdbcType=VARCHAR}
+    where username = #{username} AND password=#{password}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from admin

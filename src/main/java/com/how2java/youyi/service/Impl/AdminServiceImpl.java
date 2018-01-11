@@ -20,7 +20,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public Admin get(String name) {
-        return adminMapper.selectByUsername(name);
+    public Admin get(String username,String password) {
+        return adminMapper.selectByUsername(username,password);
     }
 }
