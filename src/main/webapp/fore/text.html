@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css">
+</head>
+<body style="padding: 10px;" ng-app="app">
+<div >
+    <form role="form" ng-controller="addUserCtrl">
+    <input type="text" ng-model="data.name"  />
+    <input type="text" ng-model="data.password"/>
+    <input type="submit" value="添加" ng-click="addUser()" />
+    </form>
+</div>
+
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/text.js"></script>
+</html>

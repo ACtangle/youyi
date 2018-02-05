@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="commons-beanutils-1.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-beanutils-1.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-collections-3.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-lang-2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/jackson-core.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/jackson-mapper.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-beanutils-1.7.0.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-collections-3.2.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/commons-lang-2.0.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/jackson-core.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/jackson-mapper.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15-javadoc.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15-sources.jar!/" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/jcksonÒÀÀµ°ü/json-lib-2.3-jdk15.jar!/" recursive="false" />
+  </library>
+</component>

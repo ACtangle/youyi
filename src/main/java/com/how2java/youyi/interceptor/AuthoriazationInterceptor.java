@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthoriazationInterceptor implements HandlerInterceptor {
 
     //不拦截的url请求
-    private static final String[] IGNORE_URI = {"/adminLogin","/admin_login"};
+    private static final String[] IGNORE_URI = {"/adminLogin","/admin_login","forehome","getUsers"};
 
     //处理拦截器的方法
     @Override

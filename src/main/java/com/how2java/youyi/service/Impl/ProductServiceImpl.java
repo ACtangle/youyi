@@ -11,6 +11,7 @@ import com.how2java.youyi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,11 @@ public class ProductServiceImpl implements ProductService {
     CategoryService categoryService;
     @Autowired
     ProductImageService productImageService;
+//    @Autowired
+//    ProductService productService;
 
-    public List<Product> list(int cid){
+    @Override
+    public List list(int cid){
         ProductExample productExample = new ProductExample();
         productExample.setOrderByClause("id desc");
         List result = productMapper.selectByExample(productExample);
@@ -81,4 +85,33 @@ public class ProductServiceImpl implements ProductService {
             setFirstProductImage(p);
         }
     }
+
+//    @Override
+//    public void fill(List<Category> categoryies) {
+//        for (Category category : categoryies) {
+//            fill(category);
+//        }
+//    }
+//
+//    @Override
+//    public void fill(Category category) {
+//        List<Product> products = productService.list(category.getId());
+//        category.setProducts(products);
+//    }
+//
+//    @Override
+//    public void fillByRow(List<Category> categories) {
+//        int productNumberEachRow = 8;
+//        for (Category category : categories) {
+//            List<Product> products = category.getProducts();
+//            List<List<Product>> productsByRow = new ArrayList<>();
+//            for (int i = 0; i < products.size() ; i+=productNumberEachRow) {
+//                int size  = i + productNumberEachRow;
+//                size = size>products.size()?products.size():size;
+//                List<Product> productsOfEachRow = products.subList(i,size);
+//                productsByRow.add(productsOfEachRow);
+//            }
+//            category.setProductsByRow(productsByRow);
+//        }
+//    }
 }

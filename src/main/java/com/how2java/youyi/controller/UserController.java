@@ -2,14 +2,22 @@ package com.how2java.youyi.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.how2java.youyi.pojo.User;
 import com.how2java.youyi.service.UserService;
 import com.how2java.youyi.util.Page;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 
 
@@ -31,5 +39,47 @@ public class UserController {
         model.addAttribute("us",us);
         model.addAttribute("page",page);
         return "admin/listUser";
+    }
+
+    @RequestMapping(value="fore/getUsers",method=RequestMethod.GET)
+    @ResponseBody
+    public Object getUsers() {
+        List<User> users = userService.list();
+        return users;
+    }
+
+    @RequestMapping(value="fore/addUser",method = RequestMethod.POST)
+    @ResponseBody
+    public Object addUser(HttpServletRequest request) throws Exception{
+        String requestStr = getRequestString(request);
+        JSONObject json  = JSONObject.fromObject(requestStr);
+        User user = null;
+        if (json.containsKey("data")) {
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("data"),User.class);
+        }
+        boolean isok = false;
+        if (user != null) {
+            userService.add(user);
+            isok = true;
+        }
+        return isok;
+    }
+
+    //请求信息转换
+    public String getRequestString(HttpServletRequest request) throws Exception {
+        request.setCharacterEncoding("UTF-8");
+        BufferedReader br = new BufferedReader(new InputStreamReader((ServletInputStream)request.getInputStream(),"UTF-8"));
+        String line = null;
+        StringBuilder sb = new StringBuilder();
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        String requestString = sb.toString();
+        if (requestString == null) {
+            requestString = request.getQueryString();
+            requestString = java.net.URLDecoder.decode(requestString,"UTF-8");
+        }
+        return requestString;
     }
 }
