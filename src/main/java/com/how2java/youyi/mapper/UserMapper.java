@@ -2,6 +2,8 @@ package com.how2java.youyi.mapper;
 
 import com.how2java.youyi.pojo.User;
 import com.how2java.youyi.pojo.UserExample;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -18,4 +20,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectByUsername(@Param("name") String username, @Param("password") String password);
 }

@@ -18,6 +18,7 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -54,6 +55,7 @@ public class UserController {
         String requestStr = getRequestString(request);
         JSONObject json  = JSONObject.fromObject(requestStr);
         User user = null;
+//        System.out.println(json);
         if (json.containsKey("data")) {
             Gson gson = new Gson();
             user = gson.fromJson(json.getString("data"),User.class);
@@ -64,6 +66,34 @@ public class UserController {
             isok = true;
         }
         return isok;
+    }
+
+    @RequestMapping(value="fore/loginUser",method=RequestMethod.POST)
+    @ResponseBody
+    public Object userLogin(HttpServletRequest request) throws Exception{
+        String requestString = getRequestString(request);
+        User user = null;
+        List<Object> list = new ArrayList<>();
+        JSONObject json = JSONObject.fromObject(requestString);
+            System.out.println(json);
+        if(json.containsKey("data")) {
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("data"),User.class);
+//            System.out.println("==========================================");
+        }
+//        System.out.println("" + user.getName() +"--" +user.getPassword());
+        boolean response = false;
+        if (user != null) {
+            User sqlUser = userService.get(user.getName(),user.getPassword());
+            if(sqlUser.getName().equals(user.getName()) && sqlUser.getPassword().equals(user.getPassword())) {
+                response = true;
+                user.setId(sqlUser.getId());
+            }
+        }
+//        System.out.println("=-=-=-=-=-=-=-=-=-=-=");
+        list.add(response);
+        list.add(user);
+        return list;
     }
 
     //请求信息转换

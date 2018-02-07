@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <style>
+    .wrapper{
+        width:200px;
+        margin: 30px auto;
+    }
+    </style>
+</head>
+<body ng-app="login">
+    <div class="wrapper">
+        <form ng-controller="loginCtrl" >
+            <label>用户名：</label>
+            <input type="text" class="form-control" placeholder="用户名" ng-model="userData.name" required/>
+            <label>密码：</label>
+            <input type="password" placeholder="密码" class="form-control" ng-model="userData.password" required>
+            <input type="submit" class="form-control" value="登录" ng-click="login()" />
+            <input type="submit" class="form-control" value="注册" ng-click="toRegister()" />
+        </form>
+    </div>
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/LoginController.js"></script>
+</html>

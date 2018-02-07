@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" >
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" >
+    <title>用户注册</title>
+    <style>
+        .red{
+            background:#a30;
+        }
+        .error{
+            color:#a10;
+        }
+        p.error{
+            display: none;
+        }
+        input.error{
+            border:1px solid #a10;
+        }
+        .wrapper {
+            width:300px;
+            margin:30px auto;
+        }
+    </style>
+</head>
+<body ng-app="register">
+    <form>
+        <div class="wrapper" ng-controller="registerCtrl">
+           <h2>注册</h2>
+           <div class="form-group">
+               <label>用户名:</label>
+               <input name="name" type="text"  class="form-control"  placeholder="用户名" ng-model="userData.name"/>
+               <p class="error"></p>
+           </div>
+           <div class="form-group">
+              <label>密码:</label>
+               <input name="password" type="text" class="form-control"  placeholder="密码" ng-model="userData.password" />
+               <p class="error"></p>
+            </div>
+           <div class="form-group">
+              <label>确认密码:</label>
+               <input name="password2" type="text" class="form-control" placeholder="确认密码" ng-model="userDara.password2" />
+               <p class="error"></p>
+           </div>
+            <div class="form-group">
+               <button type="submit" class="btn btn-primary" ng-click="register()">注册</button>
+           </div>
+    </form>
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/RegisterController.js"></script>
+</html>
