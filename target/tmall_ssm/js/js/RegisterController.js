@@ -15,17 +15,17 @@ angular.module('register',[])
             .success(function(resp){
                 if(resp){
                     locationUrl = absUrl.replace("userRegister","userLogin");
-                    alert("添加成功");
+                    alert("注册成功，点击确定返回登录");
                     location.href = locationUrl;
                     // console.log(resp);
                 }
                 else if(!resp){
-                    alert("添加失败");
-                    console.log(resp);
+                    alert("注册失败");
+                    // console.log(resp);
                 }
             })
             .error(function (resp) {
-                alert("未知错误");
+                alert("注册失败");
             })
     }
 })

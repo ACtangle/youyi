@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="../css/fore/style.css" type="text/css">
 </head>
 <body style="padding: 10px;" ng-app="app">
-<div >
+<div>
     <form role="form" ng-controller="addUserCtrl">
     <input type="text" ng-model="data.name"  />
     <input type="text" ng-model="data.password"/>
     <input type="submit" value="添加" ng-click="addUser()" />
     </form>
+    <h1 id="name"></h1>
+    <h1 id="password">ssss</h1>
 </div>
+<script>
+    <!--　除了表单以外的标签赋值内容-->
+    document.getElementById("name").innerHTML = sessionStorage.getItem("name");
+</script>
 
 </body>
 <script src="../js/jquery/3.3.1/jquery-3.3.1.min.js"></script>

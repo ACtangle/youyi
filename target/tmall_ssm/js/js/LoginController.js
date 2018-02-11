@@ -48,13 +48,12 @@ angular.module('login',[])
         $http.post("loginUser", {data: $scope.userData})
             .success(function (resp){
                 if(resp["0"] == true) {
-                    // console.log(absUrl);
                     //页面跳转
                     locationUrl = absUrl.replace("userLogin","text") + "?id=" + resp[1].id;
+                    sessionStorage.setItem("name",$scope.userData.name);
+                    sessionStorage.setItem("password",$scope.userData.password);
                     alert("登录成功");
                     location.href = locationUrl;
-                    // console.log(locationUrl);
-
                 }else{
                     alert("用户名或密码错误");
                 }
