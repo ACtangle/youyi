@@ -7,22 +7,53 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>用户登录</title>
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
     <style>
-    .wrapper{
-        width:200px;
-        margin: 30px auto;
-    }
+        .loginBackgroundImg{
+            padding-top:30px;
+        }
+         .wrapper{
+             border:1px solid #E8F2FF;
+             width:300px;
+             margin: 10px auto;
+         }
+         .upLogin{
+             padding-top:30px;
+             padding-bottom: 40px;
+         }
     </style>
 </head>
 <body ng-app="login">
+    <div class="simpleLogo">
+        <a href="index.html"><img src="../img/site/logo.png"></a>
+        <img id="loginBackgroundImg" class="loginBackgroundImg" src="../img/site/slider01.jpg">
+    </div>
     <div class="wrapper">
         <form ng-controller="loginCtrl" >
-            <label>用户名：</label>
-            <input type="text" class="form-control" placeholder="用户名" ng-model="userData.name" required/>
-            <label>密码：</label>
-            <input type="password" placeholder="密码" class="form-control" ng-model="userData.password" required>
+            <div class="loginSmallDiv">
+            <div class="login_acount_text">登录</div>
+            <!--<label>用户名：</label>-->
+            <div class="loginInput">
+                <span class="loginInputIcon">
+                    <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="手机/账号" ng-model="userData.name" required/>
+            </div>
+
+            <!--<label>密码：</label>-->
+            <div class="loginInput">
+                <span class="loginInputIcon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                    <input type="password" placeholder="密码" class="form-control" ng-model="userData.password" required>
+            </div>
+            <div class="upLogin">
+                <a class="notImplementLink" href="#nowhere">忘记登录密码</a>
+                <a ng-click="toRegister()" class="pull-right">免费注册</a>
+            </div>
             <input type="submit" class="form-control" value="登录" ng-click="login()" />
-            <input type="submit" class="form-control" value="注册" ng-click="toRegister()" />
+            <!--<input type="submit" class="form-control" value="注册" ng-click="toRegister()" />-->
+            </div>
         </form>
     </div>
 </body>

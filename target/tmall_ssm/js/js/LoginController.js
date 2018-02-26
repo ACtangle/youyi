@@ -11,6 +11,8 @@ angular.module('login',[])
     var absUrl = $location.absUrl();
     //跳转路径变量
     var locationUrl = "";
+    //登录session flag
+    // $scope.flag = true;
 
 
     //参数解析
@@ -49,11 +51,13 @@ angular.module('login',[])
             .success(function (resp){
                 if(resp["0"] == true) {
                     //页面跳转
-                    locationUrl = absUrl.replace("userLogin","text") + "?id=" + resp[1].id;
+                    locationUrl = absUrl.replace("userLogin","index") + "?id=" + resp[1].id;
                     sessionStorage.setItem("name",$scope.userData.name);
                     sessionStorage.setItem("password",$scope.userData.password);
+                    // $scope.flag = false;
                     alert("登录成功");
                     location.href = locationUrl;
+                    // document.getElementById("name").innerHTML = "欢迎" + sessionStorage.setItem("name",$scope.userData.name) + "登录";
                 }else{
                     alert("用户名或密码错误");
                 }

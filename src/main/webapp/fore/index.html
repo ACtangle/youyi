@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app="index">
 
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="../images/icons/favicon.ico">
     <!-- Place favicon.ico in the root directory -->
 
     <<!-- All css files are included here. -->
@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="../css/fore/responsive.css">
     <!-- User style -->
     <link rel="stylesheet" href="../css/fore/custom.css">  <link rel="stylesheet" href="../css/color/skin-default.css">
-
+    <link rel="stylesheet" href="../css/fore/font-awesome.min.css">
 
     <!-- Modernizr JS -->
     <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<body>
+<body ng-controller="indexCtrl">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->  
@@ -46,8 +46,10 @@
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="login-register-area">
                                 <ul>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Register</a></li>
+                                    <li ng-if="flag" ><a href="userLogin.html">Login</a></li>
+                                    <li ng-if="!flag"><a href="#">Welcome,{{userData.name}}</a></li>
+                                    <li ng-if="!flag"><a href="index.html" ng-click="loggout()">log out</a> </li>
+                                    <li><a href="userRegister.html">Register</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,23 +69,23 @@
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="cart-currency-area login-register-area text-right">
                                 <ul>
-                                    <li>
-                                        <div class="header-currency">
-                                            <select>
-                                                <option value="1">USD</option>
-                                                <option value="2">Pound</option>
-                                                <option value="3">Euro</option>
-                                                <option value="4">Dinar</option>
-                                            </select>
-                                        </div>
-                                    </li>
+                                    <!--<li>-->
+                                        <!--<div class="header-currency">-->
+                                            <!--<select>-->
+                                                <!--<option value="1">USD</option>-->
+                                                <!--<option value="2">Pound</option>-->
+                                                <!--<option value="3">Euro</option>-->
+                                                <!--<option value="4">Dinar</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
                                     <li>
                                         <div class="header-cart">
                                             <div class="cart-icon"> <a href="#">Cart<i class="zmdi zmdi-shopping-cart"></i></a> <span>2</span> </div>
                                             <div class="cart-content-wraper">
                                                 <div class="cart-single-wraper">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="images/product/01.jpg" alt=""></a>
+                                                        <a href="#"><img src="../images/product/01.jpg" alt=""></a>
                                                     </div>
                                                     <div class="cart-content">
                                                         <div class="cart-name"> <a href="#">Aenean Eu Tristique</a> </div>
@@ -94,7 +96,7 @@
                                                 </div>
                                                 <div class="cart-single-wraper">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="images/product/02.jpg" alt=""></a>
+                                                        <a href="#"><img src="../images/product/02.jpg" alt=""></a>
                                                     </div>
                                                     <div class="cart-content">
                                                         <div class="cart-name"> <a href="#">Aenean Eu Tristique</a> </div>
@@ -123,7 +125,7 @@
                         <div class="row">
                             <div class="col-md-2 col-sm-2">
                                 <div class="logo ptb-20"><a href="index.html"> 
-									<img src="images/logo/logo.png" alt="main logo"></a>
+									<img src="../images/logo/logo.png" alt="main logo"></a>
 								</div>
                             </div>
                             <div class="col-md-7 col-sm-10 hidden-xs">
@@ -161,7 +163,7 @@
                                                     <li><a href="shop.html">T-Shirt 04</a></li>
                                                 </ul>
                                                 <div class="mega-banner-img">
-                                                    <a href="single-product.html"><img src="images/banner/banner-fashion-02.jpg" alt=""></a>
+                                                    <a href="single-product.html"><img src="../images/banner/banner-fashion-02.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -192,7 +194,7 @@
                                                     <li><a href="shop.html">Sandel 05</a></li>
                                                 </ul>
                                                 <div class="mega-banner-img">
-                                                    <a href="single-product.html"><img src="images/banner/banner-fashion.jpg" alt=""></a>
+                                                    <a href="single-product.html"><img src="../images/banner/banner-fashion.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -397,7 +399,7 @@
         <div class="slider-area pos-rltv carosule-pagi cp-line">
             <div class="active-slider">
                 <div class="single-slider pos-rltv">
-                    <div class="slider-img"><img src="images/slider/slider01.jpg" alt=""></div>
+                    <div class="slider-img"><img src="../images/slider/slider01.jpg" alt=""></div>
                     <div class="slider-content pos-abs">
                         <h4>Best Collection</h4>
                         <h1 class="uppercase pos-rltv underline">exclusive Fashion 2016</h1>
@@ -405,7 +407,7 @@
                     </div>
                 </div>
                 <div class="single-slider pos-rltv">
-                    <div class="slider-img"><img src="images/slider/slider02.jpg" alt=""></div>
+                    <div class="slider-img"><img src="../images/slider/slider02.jpg" alt=""></div>
                     <div class="slider-content pos-abs">
                         <h4>Best Collection</h4>
                         <h1 class="uppercase pos-rltv underline">exclusive Fashion 2016</h1>
@@ -413,7 +415,7 @@
                     </div>
                 </div>
                 <div class="single-slider pos-rltv">
-                    <div class="slider-img"><img src="images/slider/slider01.jpg" alt=""></div>
+                    <div class="slider-img"><img src="../images/slider/slider01.jpg" alt=""></div>
                     <div class="slider-content pos-abs">
                         <h4>Best Collection</h4>
                         <h1 class="uppercase pos-rltv underline">exclusive Fashion 2016</h1>
@@ -430,25 +432,25 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-service shadow-box text-center">
-                            <img src="images/icons/garantee.png" alt="">
+                            <img src="../images/icons/garantee.png" alt="">
                             <h5>Money Back Guarantee</h5>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-service shadow-box text-center">
-                            <img src="images/icons/coupon.png" alt="">
+                            <img src="../images/icons/coupon.png" alt="">
                             <h5>Gift Coupon</h5>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-service shadow-box text-center">
-                            <img src="images/icons/delivery.png" alt="">
+                            <img src="../images/icons/delivery.png" alt="">
                             <h5>Free Shipping</h5>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-service shadow-box text-center">
-                            <img src="images/icons/support.png" alt="">
+                            <img src="../images/icons/support.png" alt="">
                             <h5>24x7 Support</h5>
                         </div>
                     </div>
@@ -465,7 +467,7 @@
                         <div class="single-slider">
                             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12"> 
                                 <div class="brand-img text-center">
-                                    <img src="images/team/branding.png" alt=""> 
+                                    <img src="../images/team/branding.png" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
@@ -500,7 +502,7 @@
                         <div class="single-slider">
                             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12"> 
                                 <div class="brand-img text-center">
-                                    <img src="images/team/branding.png" alt=""> 
+                                    <img src="../images/team/branding.png" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
@@ -535,7 +537,7 @@
                         <div class="single-slider">
                             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12"> 
                                 <div class="brand-img text-center">
-                                    <img src="images/team/branding.png" alt=""> 
+                                    <img src="../images/team/branding.png" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
@@ -592,7 +594,7 @@
                                         <div class="new">New</div>
                                     </div>
                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                        <a href="single-product.html"> <img alt="" src="images/product/01.jpg" class="primary-image"> <img alt="" src="images/product/02.jpg" class="secondary-image"> </a>
+                                        <a href="single-product.html"> <img alt="" src="../images/product/01.jpg" class="primary-image"> <img alt="" src="../images/product/02.jpg" class="secondary-image"> </a>
                                     </div>
                                     <div class="product-icon socile-icon-tooltip text-center">
                                         <ul>
@@ -619,7 +621,7 @@
                             <div class="single-product">
                                 <div class="product-img">
                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                        <a href="single-product.html"> <img alt="" src="images/product/03.jpg" class="primary-image"> <img alt="" src="images/product/04.jpg" class="secondary-image"> </a>
+                                        <a href="single-product.html"> <img alt="" src="../images/product/03.jpg" class="primary-image"> <img alt="" src="../images/product/04.jpg" class="secondary-image"> </a>
                                     </div>
                                     <div class="product-icon socile-icon-tooltip text-center">
                                         <ul>
@@ -649,7 +651,7 @@
                                         <div class="new">Sale</div>
                                     </div>
                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                        <a href="single-product.html"> <img alt="" src="images/product/02.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                        <a href="single-product.html"> <img alt="" src="../images/product/02.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                     </div>
                                     <div class="product-icon socile-icon-tooltip text-center">
                                         <ul>
@@ -683,7 +685,7 @@
                             <div class="single-product">
                                 <div class="product-img">
                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                        <a href="single-product.html"> <img alt="" src="images/product/04.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                        <a href="single-product.html"> <img alt="" src="../images/product/04.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                     </div>
                                     <div class="product-icon socile-icon-tooltip text-center">
                                         <ul>
@@ -710,7 +712,7 @@
                             <div class="single-product">
                                 <div class="product-img">
                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                        <a href="single-product.html"> <img alt="" src="images/product/05.jpg" class="primary-image"> <img alt="" src="images/product/06.jpg" class="secondary-image"> </a>
+                                        <a href="single-product.html"> <img alt="" src="../images/product/05.jpg" class="primary-image"> <img alt="" src="../images/product/06.jpg" class="secondary-image"> </a>
                                     </div>
                                     <div class="product-icon socile-icon-tooltip text-center">
                                         <ul>
@@ -754,7 +756,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="sb-img text-center">
-                                        <img src="images/banner/02.png" alt="">
+                                        <img src="../images/banner/02.png" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
@@ -791,7 +793,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="sb-img text-center">
-                                        <img src="images/banner/01.png" alt="">
+                                        <img src="../images/banner/01.png" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
@@ -841,7 +843,7 @@
                                                         <div class="new">New</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/01.jpg" class="primary-image"> <img alt="" src="images/product/02.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/01.jpg" class="primary-image"> <img alt="" src="../images/product/02.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -868,7 +870,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/03.jpg" class="primary-image"> <img alt="" src="images/product/04.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/03.jpg" class="primary-image"> <img alt="" src="../images/product/04.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -898,7 +900,7 @@
                                                         <div class="new">Sale</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/02.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/02.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -932,7 +934,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/04.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/04.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -959,7 +961,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/05.jpg" class="primary-image"> <img alt="" src="images/product/06.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/05.jpg" class="primary-image"> <img alt="" src="../images/product/06.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1000,7 +1002,7 @@
                                                         <div class="new">New</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/01.jpg" class="primary-image"> <img alt="" src="images/product/02.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/01.jpg" class="primary-image"> <img alt="" src="../images/product/02.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1030,7 +1032,7 @@
                                                         <div class="new">Sale</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/02.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/02.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1064,7 +1066,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/04.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/04.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1091,7 +1093,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/03.jpg" class="primary-image"> <img alt="" src="images/product/04.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/03.jpg" class="primary-image"> <img alt="" src="../images/product/04.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1118,7 +1120,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/05.jpg" class="primary-image"> <img alt="" src="images/product/06.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/05.jpg" class="primary-image"> <img alt="" src="../images/product/06.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1156,7 +1158,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/04.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/04.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1183,7 +1185,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/05.jpg" class="primary-image"> <img alt="" src="images/product/06.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/05.jpg" class="primary-image"> <img alt="" src="../images/product/06.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1220,7 +1222,7 @@
                                                         <div class="new">New</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/01.jpg" class="primary-image"> <img alt="" src="images/product/02.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/01.jpg" class="primary-image"> <img alt="" src="../images/product/02.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1247,7 +1249,7 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/03.jpg" class="primary-image"> <img alt="" src="images/product/04.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/03.jpg" class="primary-image"> <img alt="" src="../images/product/04.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1277,7 +1279,7 @@
                                                         <div class="new">Sale</div>
                                                     </div>
                                                     <div class="single-prodcut-img  product-overlay pos-rltv">
-                                                        <a href="single-product.html"> <img alt="" src="images/product/02.jpg" class="primary-image"> <img alt="" src="images/product/03.jpg" class="secondary-image"> </a>
+                                                        <a href="single-product.html"> <img alt="" src="../images/product/02.jpg" class="primary-image"> <img alt="" src="../images/product/03.jpg" class="secondary-image"> </a>
                                                     </div>
                                                     <div class="product-icon socile-icon-tooltip text-center">
                                                         <ul>
@@ -1329,7 +1331,7 @@
                          <div class="total-testimonial active-slider carosule-pagi pagi-03">
                              <div class="single-testimonial">
                                  <div class="testimonial-img">
-                                     <img src="images/team/testi-03.jpg" alt="">
+                                     <img src="../images/team/testi-03.jpg" alt="">
                                  </div>
                                  <div class="testimonial-content color-lightgrey">
                                      <div class="name-degi pos-rltv">
@@ -1343,7 +1345,7 @@
                              </div>
                              <div class="single-testimonial">
                                  <div class="testimonial-img">
-                                     <img src="images/team/testi-02.jpg" alt="">
+                                     <img src="../images/team/testi-02.jpg" alt="">
                                  </div>
                                  <div class="testimonial-content color-lightgrey">
                                      <div class="name-degi pos-rltv">
@@ -1357,7 +1359,7 @@
                              </div>
                              <div class="single-testimonial">
                                  <div class="testimonial-img">
-                                     <img src="images/team/testi-01.jpg" alt="">
+                                     <img src="../images/team/testi-01.jpg" alt="">
                                  </div>
                                  <div class="testimonial-content color-lightgrey">
                                      <div class="name-degi pos-rltv">
@@ -1390,7 +1392,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                            <div class="product-ctg-img pos-rltv product-overlay">
-                                               <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                               <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                            </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -1411,7 +1413,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                            <div class="product-ctg-img pos-rltv product-overlay">
-                                               <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                               <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                            </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -1434,7 +1436,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                        <div class="product-ctg-img pos-rltv product-overlay">
-                                           <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                           <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                        </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -1455,7 +1457,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                        <div class="product-ctg-img pos-rltv product-overlay">
-                                           <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                           <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                        </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -1486,7 +1488,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                <div class="product-ctg-img pos-rltv product-overlay">
-                                                   <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                                   <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                                </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -1507,7 +1509,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                <div class="product-ctg-img pos-rltv product-overlay">
-                                                   <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                                   <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                                </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -1530,7 +1532,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                            <div class="product-ctg-img pos-rltv product-overlay">
-                                               <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                               <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                            </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -1551,7 +1553,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                        <div class="product-ctg-img pos-rltv product-overlay">
-                                           <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                           <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                        </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -1583,7 +1585,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                <div class="product-ctg-img pos-rltv product-overlay">
-                                                   <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                                   <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                                </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -1604,7 +1606,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                <div class="product-ctg-img pos-rltv product-overlay">
-                                                   <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                                   <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                                </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -1627,7 +1629,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                        <div class="product-ctg-img pos-rltv product-overlay">
-                                           <a href="single-product.html"><img src="images/product/s01.jpg" alt=""></a>
+                                           <a href="single-product.html"><img src="../images/product/s01.jpg" alt=""></a>
                                        </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -1648,7 +1650,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                        <div class="product-ctg-img pos-rltv product-overlay">
-                                           <a href="single-product.html"><img src="images/product/s02.jpg" alt=""></a>
+                                           <a href="single-product.html"><img src="../images/product/s02.jpg" alt=""></a>
                                        </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -1680,34 +1682,34 @@
                 <div class="row">
                    <div class="total-brand">
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/01.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/01.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/02.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/02.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/03.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/03.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/04.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/04.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/05.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/05.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/06.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/06.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/01.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/01.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/02.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/02.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/03.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/03.png" alt=""></a></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="single-brand shadow-box"><a href="#"><img src="images/brand/04.png" alt=""></a></div>
+                            <div class="single-brand shadow-box"><a href="#"><img src="../images/brand/04.png" alt=""></a></div>
                         </div>
                 </div>
             </div>
@@ -1728,7 +1730,7 @@
                         <div class="col-md-4">
                            <div class="single-blog">
                                <div class="blog-img pos-rltv product-overlay">
-                                   <a href="#"><img src="images/blog/01.jpg" alt=""></a>
+                                   <a href="#"><img src="../images/blog/01.jpg" alt=""></a>
                                </div>
                                <div class="blog-content">
                                    <div class="blog-title">
@@ -1751,7 +1753,7 @@
                         <div class="col-md-4">
                            <div class="single-blog">
                                <div class="blog-img pos-rltv product-overlay">
-                                   <a href="#"><img src="images/blog/02.jpg" alt=""></a>
+                                   <a href="#"><img src="../images/blog/02.jpg" alt=""></a>
                                </div>
                                <div class="blog-content">
                                    <div class="blog-title">
@@ -1774,7 +1776,7 @@
                         <div class="col-md-4">
                            <div class="single-blog">
                                <div class="blog-img pos-rltv product-overlay">
-                                   <a href="#"><img src="images/blog/03.jpg" alt=""></a>
+                                   <a href="#"><img src="../images/blog/03.jpg" alt=""></a>
                                </div>
                                <div class="blog-content">
                                    <div class="blog-title">
@@ -1797,7 +1799,7 @@
                         <div class="col-md-4">
                            <div class="single-blog">
                                <div class="blog-img pos-rltv product-overlay">
-                                   <a href="#"><img src="images/blog/01.jpg" alt=""></a>
+                                   <a href="#"><img src="../images/blog/01.jpg" alt=""></a>
                                </div>
                                <div class="blog-content">
                                    <div class="blog-title">
@@ -1876,12 +1878,12 @@
                             </div>
                             <div class="instagrm">
                                 <ul>
-                                    <li><a href="#"><img src="images/gallery/01.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="images/gallery/02.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="images/gallery/03.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="images/gallery/04.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="images/gallery/05.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="images/gallery/06.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/01.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/02.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/03.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/04.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/05.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="../images/gallery/06.jpg" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1934,19 +1936,19 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <ul class="payment-support text-right">
                                     <li>
-                                        <a href="#"><img src="images/icons/pay1.png" alt="" /></a>
+                                        <a href="#"><img src="../images/icons/pay1.png" alt="" /></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img src="images/icons/pay2.png" alt="" /></a>
+                                        <a href="#"><img src="../images/icons/pay2.png" alt="" /></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img src="images/icons/pay3.png" alt="" /></a>
+                                        <a href="#"><img src="../images/icons/pay3.png" alt="" /></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img src="images/icons/pay4.png" alt="" /></a>
+                                        <a href="#"><img src="../images/icons/pay4.png" alt="" /></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img src="images/icons/pay5.png" alt="" /></a>
+                                        <a href="#"><img src="../images/icons/pay5.png" alt="" /></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1976,31 +1978,31 @@
                                         <div class="tab-content active-portfolio-area-2">
                                             <div role="tabpanel" class="tab-pane active" id="view1">
                                                 <div class="product-img">
-                                                    <a href="#"><img src="images/product/01.jpg" alt="Single portfolio" /></a>
+                                                    <a href="#"><img src="../images/product/01.jpg" alt="Single portfolio" /></a>
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane" id="view2">
                                                 <div class="product-img">
-                                                    <a href="#"><img src="images/product/02.jpg" alt="Single portfolio" /></a>
+                                                    <a href="#"><img src="../images/product/02.jpg" alt="Single portfolio" /></a>
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane" id="view3">
                                                 <div class="product-img">
-                                                    <a href="#"><img src="images/product/03.jpg" alt="Single portfolio" /></a>
+                                                    <a href="#"><img src="../images/product/03.jpg" alt="Single portfolio" /></a>
                                                 </div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane" id="view4">
                                                 <div class="product-img">
-                                                    <a href="#"><img src="images/product/04.jpg" alt="Single portfolio" /></a>
+                                                    <a href="#"><img src="../images/product/04.jpg" alt="Single portfolio" /></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="product-more-views-2">
                                             <div class="thumbnail-carousel-modal-2" data-tabs="tabs">
-                                                <a href="#view1" aria-controls="view1" data-toggle="tab"><img src="images/product/01.jpg" alt="" /></a>
-                                                <a href="#view2" aria-controls="view2" data-toggle="tab"><img src="images/product/02.jpg" alt="" /></a>
-                                                <a href="#view3" aria-controls="view3" data-toggle="tab"><img src="images/product/03.jpg" alt="" /></a>
-                                                <a href="#view4" aria-controls="view4" data-toggle="tab"><img src="images/product/04.jpg" alt="" /></a>
+                                                <a href="#view1" aria-controls="view1" data-toggle="tab"><img src="../images/product/01.jpg" alt="" /></a>
+                                                <a href="#view2" aria-controls="view2" data-toggle="tab"><img src="../images/product/02.jpg" alt="" /></a>
+                                                <a href="#view3" aria-controls="view3" data-toggle="tab"><img src="../images/product/03.jpg" alt="" /></a>
+                                                <a href="#view4" aria-controls="view4" data-toggle="tab"><img src="../images/product/04.jpg" alt="" /></a>
                                             </div>
                                         </div>
                                     </div>
@@ -2064,7 +2066,9 @@
     <script src="../js/plugins.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="../js/main.js"></script>
-
+    <!-- angulaJS -->
+    <script src="../js/angularJs/angular.js"></script>
+    <script src="../js/js/indexController.js"></script>
 </body>
 
 </html>
