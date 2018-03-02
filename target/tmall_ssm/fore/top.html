@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="top">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+</head>
+<body ng-controller="topCtrl">
+　<nav class="top ">
+    <a href="home.html?id={{userData.id}}">
+        <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
+        天猫首页
+    </a>
+    <span>喵，欢迎来天猫</span>
+    <span ng-if="flag" ><a href="userLogin.html">你好,请登录</a></span>
+    <span ng-if="!flag"><a href="#">欢迎,{{userData.name}}</a></span>
+    <span ng-if="!flag"><a href="home.html" ng-click="loggout()">退出登录</a> </span>
+    <span><a href="userRegister.html">免费注册</a></span>
+    <span class="pull-right">
+			<a href="forebought.html">我的订单</a>
+			<a href="forecart.html">
+			<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor"></span>
+			购物车<strong>${cartTotalItemNumber}</strong>件</a>
+    </span>
+</nav>
+
+
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/topController.js"></script>
+</html>

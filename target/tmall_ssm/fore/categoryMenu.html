@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="categoryMenu">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+</head>
+<body ng-controller="categoryMenuCtrl">
+<div class="categoryMenu">
+    <!--<c:forEach items="${cs}" var="c">-->
+        <!--<div cid="${c.id}" class="eachCategory">-->
+            <!--<span class="glyphicon glyphicon-link"></span>-->
+            <!--<a href="forecategory?cid=${c.id}">-->
+                <!--${c.name}-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</c:forEach>-->
+    <input type="hidden" ng-init="showCategorys()">
+    <div ng-repeat="object in categoryss" class="eachCategory">
+        <span class="glyphicon glyphico-link">
+            <a href="forecategory.html?cid={{object.id}}"  >{{object.name}}</a>
+        </span>
+    </div>
+</div>
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/categoryMenuController.js"></script>
+</html>

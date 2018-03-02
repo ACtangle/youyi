@@ -28,6 +28,8 @@ public class ProductServiceImpl implements ProductService {
     ProductImageService productImageService;
 //    @Autowired
 //    ProductService productService;
+//    @Autowired
+//    ProductService productService;
 
     @Override
     public List list(int cid){
@@ -86,32 +88,32 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-//    @Override
-//    public void fill(List<Category> categoryies) {
-//        for (Category category : categoryies) {
-//            fill(category);
-//        }
-//    }
-//
-//    @Override
-//    public void fill(Category category) {
-//        List<Product> products = productService.list(category.getId());
-//        category.setProducts(products);
-//    }
-//
-//    @Override
-//    public void fillByRow(List<Category> categories) {
-//        int productNumberEachRow = 8;
-//        for (Category category : categories) {
-//            List<Product> products = category.getProducts();
-//            List<List<Product>> productsByRow = new ArrayList<>();
-//            for (int i = 0; i < products.size() ; i+=productNumberEachRow) {
-//                int size  = i + productNumberEachRow;
-//                size = size>products.size()?products.size():size;
-//                List<Product> productsOfEachRow = products.subList(i,size);
-//                productsByRow.add(productsOfEachRow);
-//            }
-//            category.setProductsByRow(productsByRow);
-//        }
-//    }
+    @Override
+    public void fill(List<Category> categoryies) {
+        for (Category category : categoryies) {
+            fill(category);
+        }
+    }
+
+    @Override
+    public void fill(Category category) {
+        List<Product> products = list(category.getId());
+        category.setProducts(products);
+    }
+
+    @Override
+    public void fillByRow(List<Category> categories) {
+        int productNumberEachRow = 8;
+        for (Category category : categories) {
+            List<Product> products = category.getProducts();
+            List<List<Product>> productsByRow = new ArrayList<>();
+            for (int i = 0; i < products.size() ; i+=productNumberEachRow) {
+                int size  = i + productNumberEachRow;
+                size = size>products.size()?products.size():size;
+                List<Product> productsOfEachRow = products.subList(i,size);
+                productsByRow.add(productsOfEachRow);
+            }
+            category.setProductsByRow(productsByRow);
+        }
+    }
 }

@@ -15,7 +15,7 @@ public interface ProductService {
     Product get(int pid);
     void update(Product product);
     void setFirstProductImage(Product product);
-//    void fill(List<Category> categoryies);
-//    void fill(Category category);
-//    void fillByRow(List<Category> categories);
+    void fill(List<Category> categoryies);
+    void fill(Category category);
+    void fillByRow(List<Category> categories);
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="homePage">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+</head>
+<body ng-controller="homePageCtrl">
+    <div ng-include="'../fore/categoryAndcarousel.html'"></div>
+    <div ng-include="'../fore/homepageCategoryProducts.html'"></div>
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    angular.module('homePage',[])
+        .controller('homePageCtrl',function ($scope) {
+
+        })
+</script>
+</html>

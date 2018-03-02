@@ -49,13 +49,13 @@ public class UserController {
         return users;
     }
 
+    //用户注册
     @RequestMapping(value="fore/addUser",method = RequestMethod.POST)
     @ResponseBody
     public Object addUser(HttpServletRequest request) throws Exception{
         String requestStr = getRequestString(request);
         JSONObject json  = JSONObject.fromObject(requestStr);
         User user = null;
-//        System.out.println(json);
         if (json.containsKey("data")) {
             Gson gson = new Gson();
             user = gson.fromJson(json.getString("data"),User.class);
@@ -68,6 +68,7 @@ public class UserController {
         return isok;
     }
 
+    //用户登录
     @RequestMapping(value="fore/loginUser",method=RequestMethod.POST)
     @ResponseBody
     public Object userLogin(HttpServletRequest request) throws Exception{
@@ -90,7 +91,6 @@ public class UserController {
                 user.setId(sqlUser.getId());
             }
         }
-//        System.out.println("=-=-=-=-=-=-=-=-=-=-=");
         list.add(response);
         list.add(user);
         return list;

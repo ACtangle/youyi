@@ -51,7 +51,8 @@ angular.module('login',[])
             .success(function (resp){
                 if(resp["0"] == true) {
                     //页面跳转
-                    locationUrl = absUrl.replace("userLogin","index") + "?id=" + resp[1].id;
+                    locationUrl = absUrl.replace("userLogin","home") + "?id=" + resp[1].id;
+                    sessionStorage.setItem("id",resp[1].id);
                     sessionStorage.setItem("name",$scope.userData.name);
                     sessionStorage.setItem("password",$scope.userData.password);
                     // $scope.flag = false;

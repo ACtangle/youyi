@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+</head>
+<body>
+    <a href="home.html?id={{userData.id}}">
+        <img id="logo" src="../img/site/logo.gif" class="logo">
+    </a>
+
+    <form action="foresearch" method="post" >
+        <div class="searchDiv">
+            <input name="keyword" type="text" value="${param.keyword}" placeholder="时尚男鞋  太阳镜 ">
+            <button  type="submit" class="searchButton">搜索</button>
+            <div class="searchBelow">
+                <c:forEach items="${cs}" var="c" varStatus="st">
+                    <c:if test="${st.count>=5 and st.count<=8}">
+						<span>
+							<a href="forecategory?cid=${c.id}">
+									${c.name}
+							</a>
+							<c:if test="${st.count!=8}">
+								<span>|</span>
+							</c:if>
+						</span>
+                    </c:if>
+                </c:forEach>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</html>

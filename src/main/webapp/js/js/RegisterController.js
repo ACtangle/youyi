@@ -29,7 +29,7 @@ angular.module('register',[])
                     }
                 })
                 .error(function (resp) {
-                    alert("注册失败");
+                    alert("用户名已被注册");
                 })
         }
     }
