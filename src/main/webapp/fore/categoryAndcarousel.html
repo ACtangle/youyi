@@ -54,8 +54,6 @@
             $("div.categoryMenu").css("left",left-20);
             $("div.categoryWithCarousel div.head").css("margin-left",left);
             $("div.productsAsideCategorys").css("left",left-20);
-
-
         });
     </script>
 </head>
@@ -87,16 +85,13 @@
 
 
       <div style="position: relative">
-          <!--<%@include file="categoryMenu.jsp" %>-->
           <div ng-include="'../fore/categoryMenu.html'"></div>
       </div>
 
-      <div style="position: relative;left: 0;top: 0;">
-          <!--<%@include file="productsAsideCategorys.jsp" %>-->
+      <div style="position: relative;left: 0;top: 0;" >
           <div ng-include="'../fore/productsAsideCategorys.html'"></div>
       </div>
 
-      <!--<%@include file="carousel.jsp" %>-->
       <div ng-include="'../fore/carousel.html'"></div>
       <div class="carouselBackgroundDiv">
       </div>

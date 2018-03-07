@@ -13,7 +13,6 @@
                     $(this).css("color","#87CEFA");
             });
         });
-
     </script>
 </head>
 <body ng-controller="productsAsideCatrgorysCtrl">
@@ -38,6 +37,15 @@
         <!--</c:forEach>-->
     <!--</div>-->
 <!--</c:forEach>-->
+<input type="hidden" ng-init="show()" />
+<div class="productsAsideCategorys" ng-repeat="object in categoryss">
+    <span ng-bind="object.name"></span>
+    <div ng-repeat="objectByRow in object.productsByRow" class="row show1">
+        <div ng-repeat="objectByRow in objectByRow" class="row show1">
+            <a href="foreproduct?pid?={{objectByRow.id}}">{{objectByRow.subTitle}}</a>
+        </div>
+    </div>
+</div>
 
 </body>
 <script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>

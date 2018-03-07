@@ -60,4 +60,20 @@ angular.module('index',[])
             })
     }
 
+    $scope.show=function () {
+        $http.get("showCategorys")
+            .success(function (resp) {
+                // console.log(resp.length);
+                for(var i=0;i<resp.length;i++){
+                    $scope.categoryss[i] = resp[i];
+                    // console.log("-------------------------------------------");
+
+                }
+                // console.log($scope.categoryss);
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
+
 })
