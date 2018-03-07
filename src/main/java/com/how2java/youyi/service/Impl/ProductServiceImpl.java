@@ -34,6 +34,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List list(int cid){
         ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andCidEqualTo(cid);
         productExample.setOrderByClause("id desc");
         List result = productMapper.selectByExample(productExample);
         setCategory(result);

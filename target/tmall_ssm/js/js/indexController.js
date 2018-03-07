@@ -52,7 +52,7 @@ angular.module('index',[])
                     // $scope.categorys.ids[i] = resp[i].id;
                     // $scope.categorys.names[i] = resp[i].name;
                     $scope.categoryss[i] = resp[i];
-                    console.log($scope.categorys[i]);
+                    // console.log($scope.categorys[i]);
                 }
             })
             .error(function (resp) {
