@@ -13,6 +13,8 @@ angular.module('index',[])
     $scope.categorys = [];
     //商品分类数组数据源
     $scope.categoryss = [];
+    //分类产品栏展示数目
+    $scope.productcount=5;
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -60,14 +62,14 @@ angular.module('index',[])
             })
     }
 
-    $scope.show=function () {
+    //获取分类产品的subTitle
+    $scope.show = function () {
         $http.get("showCategorys")
             .success(function (resp) {
                 // console.log(resp.length);
                 for(var i=0;i<resp.length;i++){
                     $scope.categoryss[i] = resp[i];
                     // console.log("-------------------------------------------");
-
                 }
                 // console.log($scope.categoryss);
             })
@@ -75,5 +77,4 @@ angular.module('index',[])
                 alert("失败");
             })
     }
-
 })
