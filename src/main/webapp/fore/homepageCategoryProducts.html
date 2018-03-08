@@ -19,7 +19,7 @@
                 <a class="productItemDescLink" href="foreproduct.html?pid={{product.id}}">
                     <span class="productItemDesc">[热销]{{product.subTitle}}/{{product.name}}</span>
                 </a>
-                <span class="productPrice">{{product.promotePrice}}</span>
+                <span class="productPrice">{{product.promotePrice|currency:'¥':2}}</span>
             </div>
             <div style="clear:both"></div>
         </div>

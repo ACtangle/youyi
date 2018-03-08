@@ -55,13 +55,16 @@ public class UserController {
     public Object addUser(HttpServletRequest request) throws Exception{
         String requestStr = getRequestString(request);
         JSONObject json  = JSONObject.fromObject(requestStr);
+        boolean isok = false;
+        boolean exist = false;
         User user = null;
         if (json.containsKey("data")) {
             Gson gson = new Gson();
             user = gson.fromJson(json.getString("data"),User.class);
+            exist = userService.isExist(user.getName());
         }
-        boolean isok = false;
-        if (user != null) {
+
+        if (user != null && !exist) {
             userService.add(user);
             isok = true;
         }

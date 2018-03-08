@@ -23,7 +23,6 @@ angular.module('index',[])
         $scope.userData.password = sessionStorage.getItem("password");
         $scope.flag = false;
     }
-
     //退出登录
     $scope.loggout = function () {
         sessionStorage.clear();

@@ -38,6 +38,7 @@ nav.top span {
 	margin-right: 20px;
 }
 
+
 nav.top span, nav.top a {
 	color: #999;
 	margin: 0px 10px 0px 10px;
@@ -247,7 +248,7 @@ img.logo {
 	position: absolute;
 	left: 0px;
 	top: 50px;
- 	/*z-index:-1;*/
+ 	z-index:-1;
 }
 
 div.homepageCategoryProducts {
