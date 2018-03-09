@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    img.categoryPictureInProductPage{
+        width:900px;
+        height:400px;
+    }
+</style>
+<body>
+    <div class="categoryPictureInProductPageDiv">
+        <img class="categoryPictureInProductPage" src="../img/category/{{product[0].cid}}.jpg">
+    </div>
+
+    <div class="productPageDiv">
+        <!--<%@include file="imgAndInfo.jsp" %>-->
+        <div ng-include="'../fore/imgAndInfo.html'"></div>
+        <!--<%@include file="productReview.jsp" %>-->
+        <div ng-include="'../fore/productReview.html'"></div>
+        <!--<%@include file="productDetail.jsp" %>-->
+        <div ng-include="'../fore/productDetail.html'"></div>
+    </div>
+</body>
+</html>

@@ -5,9 +5,7 @@ import com.how2java.youyi.pojo.Category;
 import com.how2java.youyi.pojo.Product;
 import com.how2java.youyi.pojo.ProductExample;
 import com.how2java.youyi.pojo.ProductImage;
-import com.how2java.youyi.service.CategoryService;
-import com.how2java.youyi.service.ProductImageService;
-import com.how2java.youyi.service.ProductService;
+import com.how2java.youyi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,10 @@ public class ProductServiceImpl implements ProductService {
     CategoryService categoryService;
     @Autowired
     ProductImageService productImageService;
+    @Autowired
+    OrderItemService orderItemService;
+    @Autowired
+    ReviewService reviewService;
 //    @Autowired
 //    ProductService productService;
 //    @Autowired
@@ -115,6 +117,22 @@ public class ProductServiceImpl implements ProductService {
                 productsByRow.add(productsOfEachRow);
             }
             category.setProductsByRow(productsByRow);
+        }
+    }
+
+    @Override
+    public void setSaleAndReviewNumber(Product p) {
+        int saleCount = orderItemService.getSaleCount(p.getId());
+        p.setSaleCount(saleCount);
+
+        int reviewCount = reviewService.getCount(p.getId());
+        p.setReviewCount(reviewCount);
+    }
+
+    @Override
+    public void setSaleAndReviewNumber(List<Product> ps) {
+        for (Product p : ps) {
+            setSaleAndReviewNumber(p);
         }
     }
 }

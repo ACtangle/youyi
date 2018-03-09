@@ -76,16 +76,15 @@ public class UserController {
     @ResponseBody
     public Object userLogin(HttpServletRequest request) throws Exception{
         String requestString = getRequestString(request);
+        System.out.println(requestString);
         User user = null;
         List<Object> list = new ArrayList<>();
         JSONObject json = JSONObject.fromObject(requestString);
-            System.out.println(json);
+//            System.out.println(json);
         if(json.containsKey("data")) {
             Gson gson = new Gson();
             user = gson.fromJson(json.getString("data"),User.class);
-//            System.out.println("==========================================");
         }
-//        System.out.println("" + user.getName() +"--" +user.getPassword());
         boolean response = false;
         if (user != null) {
             User sqlUser = userService.get(user.getName(),user.getPassword());

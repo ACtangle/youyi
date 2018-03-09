@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="product" ng-controller="productCtrl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>产品页</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/3.3.6/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/fore/style.css">
+</head>
+<body >
+
+    <div ng-include="'../fore/header.html'"></div>
+    <div ng-include="'../fore/top.html'"></div>
+    <div ng-include="'../fore/simpleSearch.html'"></div>
+    <input type="hidden" ng-init="showProduct()">
+    <div ng-include="'../fore/productPage.html'"></div>
+    <div ng-include="'../fore/footer.html'"></div>
+
+</body>
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<script src="../js/angularJs/angular.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/js/productController.js"></script>
+
+</html>

@@ -1,6 +1,4 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
+
 
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,7 +9,7 @@
 <html>
 
 <head>
-	<script src="js/jquery/2.0.0/jquery.min.js"></script>
+	<script src="js/jquery/3.3.1/jquery-3.3.1.min.js"></script>
 	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
 	<link href="css/back/style.css" rel="stylesheet">

@@ -3,6 +3,7 @@
  */
 
 angular.module('index',[])
+
 .controller('indexCtrl',function($scope,$http) {
 
     //用户信息
@@ -15,6 +16,8 @@ angular.module('index',[])
     $scope.categoryss = [];
     //分类产品栏展示数目
     $scope.productcount=5;
+    //临时对象
+    $scope.tempdata = {};
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -76,4 +79,10 @@ angular.module('index',[])
                 alert("失败");
             })
     }
+
+    // $scope.showdetail=function(obj){
+    //     $scope.tempdata=angular.copy(obj);
+    //     alert($scope.tempdata.id);
+    //         // $state.go('product',{pid:$scope.tempdata.id});
+    // }
 })

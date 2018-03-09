@@ -8,6 +8,7 @@ angular.module('homepageCategoryProducts',[])
     $scope.categoryss = [];
     //分类产品栏展示数目
     $scope.productcount=5;
+    $scope.tempdata={};
 
     $scope.showProducts=function () {
         $http.get("showCategorys")
@@ -21,5 +22,10 @@ angular.module('homepageCategoryProducts',[])
             .error(function (resp) {
                 alert("失败");
             })
+    }
+
+    $scope.showdetail=function(obj){
+        $scope.tempdata=angular.copy(obj);
+        alert($scope.tempdata.id);
     }
 })
