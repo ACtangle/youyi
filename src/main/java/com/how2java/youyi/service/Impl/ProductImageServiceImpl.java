@@ -42,4 +42,22 @@ public class ProductImageServiceImpl implements ProductImageService{
     public ProductImage get(int id) {
         return productImageMapper.selectByPrimaryKey(id);
     }
+
+//    public List list(int pid , String type,String sort) {
+//        ProductImageExample productImageExample = new ProductImageExample();
+//        productIma eExample.createCriteria().andPidEqualTo(pid).andTypeEqualTo(type);
+//        if("date".equals(sort)){
+//            productImageExample.setOrderByClause("createDate desc");
+////        }else if("review".equals(sort)){
+////            productImageExample.setOrderByClause();
+//        }else if("saleCount".equals(sort)){
+//            productImageExample.setOrderByClause();
+//        }else if("price".equals(sort)){
+//
+//        }else if("all".equals(sort)){
+//
+//        }
+//
+//        return productImageMapper.selectByExample(productImageExample);
+//    }
 }

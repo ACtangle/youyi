@@ -2,6 +2,7 @@ package com.how2java.youyi.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.how2java.youyi.comparator.*;
 import com.how2java.youyi.pojo.*;
 import com.how2java.youyi.service.*;
 import net.sf.json.JSON;
@@ -17,7 +18,10 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -86,4 +90,107 @@ public class ForeController {
         return list;
     }
 
+    //分类产品页面
+    @RequestMapping(value = "fore/showCategoryProducts",method = RequestMethod.POST)
+    @ResponseBody
+    public Object categoryProducts(HttpServletRequest request) throws Exception{
+        String requestString = userController.getRequestString(request);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Category tempcategory = null;
+        Category category = null;
+        String sort = "";
+        if(json.containsKey("data")){
+            Gson gson = new Gson();
+            tempcategory = gson.fromJson(json.getString("data"),Category.class);
+            if(tempcategory != null){
+                category = categoryService.get(tempcategory.getId());
+            }
+        }
+        if(json.containsKey("sort")) {
+            sort = json.getString("sort");
+        }
+
+        if(category != null) {
+            productService.fill(category);
+            productService.setSaleAndReviewNumber(category.getProducts());}
+//        if(null!=sort){
+//            System.out.println("================================================="+sort);
+//            switch(sort){
+//                case "review":
+//                    Collections.sort(category.getProducts(),new ProductReviewComparator());
+//                    break;
+//                case "date" :
+//                    Collections.sort(category.getProducts(),new ProductDateComparator());
+//                    break;
+//
+//                case "saleCount" :
+//                    Collections.sort(category.getProducts(),new ProductSaleCountComparator());
+//                    break;
+//
+//                case "price":
+//                    Collections.sort(category.getProducts(),new ProductPriceComparator());
+//                    break;
+//
+//                case "all":
+//                    Collections.sort(category.getProducts(),new ProductAllComparator());
+//                    break;
+//            }
+//        }
+            return category;
+        }
+
+        @RequestMapping(value="fore/showProductsSort",method = RequestMethod.POST)
+        @ResponseBody
+        public Object showProductsSort(HttpServletRequest request) throws  Exception{
+            String requestString = userController.getRequestString(request);
+            List<Product> list = new ArrayList<Product>();
+            JSONObject json = JSONObject.fromObject(requestString);
+            Category tempcategory = null;
+            Category category = null;
+            String sort = "";
+            if(json.containsKey("data")){
+                Gson gson = new Gson();
+                String a = "";
+                tempcategory = gson.fromJson(json.getString("data"),Category.class);
+                if(tempcategory != null){
+                    category = categoryService.get(tempcategory.getId());
+                }
+            }
+            if(json.containsKey("sort")) {
+                String sortdata = json.getString("sort");
+                JSONObject jsonObject = JSONObject.fromObject(sortdata);
+                sort = jsonObject.getString("sort");
+            }
+
+            if(category != null) {
+                productService.fill(category);
+                productService.setSaleAndReviewNumber(category.getProducts());}
+        if(null != sort){
+            switch(sort){
+                case "review":
+                    Collections.sort(category.getProducts(),new ProductReviewComparator());
+                    break;
+                case "date" :
+                    Collections.sort(category.getProducts(),new ProductDateComparator());
+                    break;
+
+                case "saleCount" :
+                    Collections.sort(category.getProducts(),new ProductSaleCountComparator());
+                    break;
+
+                case "price":
+                    Collections.sort(category.getProducts(),new ProductPriceComparator());
+                    break;
+
+                case "all":
+                    Collections.sort(category.getProducts(),new ProductAllComparator());
+                    break;
+            }
+        }
+            return category;
+        }
 }
+
+
+
+

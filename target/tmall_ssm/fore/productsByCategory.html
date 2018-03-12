@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<c:if test="${empty param.categorycount}">-->
+    <!--<c:set var="categorycount" scope="page" value="100"/>-->
+<!--</c:if>-->
+
+<!--<c:if test="${!empty param.categorycount}">-->
+    <!--<c:set var="categorycount" scope="page" value="${param.categorycount}"/>-->
+<!--</c:if>-->
+<div class="categoryProducts" >
+    <!--<c:forEach items="${c.products}" var="p" varStatus="stc">-->
+        <!--<c:if test="${stc.count<=categorycount}">-->
+        <div ng-repeat="product in category.products|limitTo:20">
+            <div class="productUnit" price="{{product.promotePrice}}">
+                <div class="productUnitFrame">
+                    <a href="product.html?pid={{product.id}}">
+                        <img class="productImage" src="../img/productSingle_middle/{{product.firstProductImage.id}}.jpg">
+                    </a>
+                    <span class="productPrice">{{product.promotePrice|currency:'¥':2}}</span>
+                    <a class="productLink" href="product.html?pid={{product.id}}">
+                        <span>{{product.name}}</span><br><span>{{product.subTitle}}</span>
+                    </a>
+                    <a  class="tmallLink" href="product.html?pid={{product.id}}">天猫专卖</a>
+
+                    <div class="show1 productInfo">
+                        <span class="monthDeal ">月成交 <span class="productDealNumber">{{product.saleCount}}笔</span></span>
+                        <span class="productReview">评价<span class="productReviewNumber">{{product.reviewCount}}</span></span>
+                        <span class="wangwang">
+					<a class="wangwanglink" href="#nowhere">
+						<img src="../img/site/wangwang.png">
+					</a>
+					</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    <div style="clear:both"></div>
+</div>
+</body>
+</html>

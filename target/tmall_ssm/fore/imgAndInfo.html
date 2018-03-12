@@ -5,15 +5,11 @@
     <title>imgAndInfo</title>
     <script>
 
-//        $.ajax({
-//            type:"GET"
-//        })
-
-
-
-
+        //累加库存
         $(function(){
-            var stock = ${p.stock};
+//            var stock = ${p.stock};
+            var stock = angular.element(document.getElementById("product")).scope().product[0].stock;
+//            alert(stock);
             $(".productNumberSetting").keyup(function(){
                 var num= $(".productNumberSetting").val();
                 num = parseInt(num);
@@ -41,86 +37,89 @@
                 $(".productNumberSetting").val(num);
             });
 
-            $(".addCartButton").removeAttr("disabled");
-            $(".addCartLink").click(function(){
-                var page = "forecheckLogin";
-                $.get(
-                    page,
-                    function(result){
-                        if("success"==result){
-                            var pid = ${p.id};
-                            var num= $(".productNumberSetting").val();
-                            var addCartpage = "foreaddCart";
-                            $.get(
-                                addCartpage,
-                                {"pid":pid,"num":num},
-                                function(result){
-                                    if("success"==result){
-                                        $(".addCartButton").html("已加入购物车");
-                                        $(".addCartButton").attr("disabled","disabled");
-                                        $(".addCartButton").css("background-color","lightgray")
-                                        $(".addCartButton").css("border-color","lightgray")
-                                        $(".addCartButton").css("color","black")
+            //添加到购物车
+//            $(".addCartButton").removeAttr("disabled");
+//            $(".addCartLink").click(function(){
+//                var page = "forecheckLogin";
+//                $.get(
+//                    page,
+//                    function(result){
+//                        if("success"==result){
+////                            var pid = ${p.id};
+//                            var pid = angular.element(document.getElementById("product")).scope().product[0].id;
+//                            alert(pid);
+//                            var num= $(".productNumberSetting").val();
+//                            var addCartpage = "foreaddCart";
+//                            $.get(
+//                                addCartpage,
+//                                {"pid":pid,"num":num},
+//                                function(result){
+//                                    if("success"==result){
+//                                        $(".addCartButton").html("已加入购物车");
+//                                        $(".addCartButton").attr("disabled","disabled");
+//                                        $(".addCartButton").css("background-color","lightgray")
+//                                        $(".addCartButton").css("border-color","lightgray")
+//                                        $(".addCartButton").css("color","black")
+//                                    }
+//                                    else{
+//
+//                                    }
+//                                }
+//                            );
+//                        }
+//                        else{
+//                            $("#loginModal").modal('show');
+//                        }
+//                    }
+//                );
+//                return false;
+//            });
+//            $(".buyLink").click(function(){
+//                var page = "forecheckLogin";
+//                $.get(
+//                    page,
+//                    function(result){
+//                        if("success"==result){
+//                            var num = $(".productNumberSetting").val();
+//                            location.href= $(".buyLink").attr("href")+"&num="+num;
+//                        }
+//                        else{
+//                            $("#loginModal").modal('show');
+//                        }
+//                    }
+//                );
+//                return false;
+//            });
+//
+//            $("button.loginSubmitButton").click(function(){
+//                var name = $("#name").val();
+//                var password = $("#password").val();
+//
+//                if(0==name.length||0==password.length){
+//                    $("span.errorMessage").html("请输入账号密码");
+//                    $("div.loginErrorMessageDiv").show();
+//                    return false;
+//                }
+//
+//                var page = "foreloginAjax";
+//                $.get(
+//                    page,
+//                    {"name":name,"password":password},
+//                    function(result){
+//                        if("success"==result){
+//                            location.reload();
+//                        }
+//                        else{
+//                            $("span.errorMessage").html("账号密码错误");
+//                            $("div.loginErrorMessageDiv").show();
+//                        }
+//                    }
+//                );
+//
+//                return true;
+//            });
 
-                                    }
-                                    else{
-
-                                    }
-                                }
-                            );
-                        }
-                        else{
-                            $("#loginModal").modal('show');
-                        }
-                    }
-                );
-                return false;
-            });
-            $(".buyLink").click(function(){
-                var page = "forecheckLogin";
-                $.get(
-                    page,
-                    function(result){
-                        if("success"==result){
-                            var num = $(".productNumberSetting").val();
-                            location.href= $(".buyLink").attr("href")+"&num="+num;
-                        }
-                        else{
-                            $("#loginModal").modal('show');
-                        }
-                    }
-                );
-                return false;
-            });
-
-            $("button.loginSubmitButton").click(function(){
-                var name = $("#name").val();
-                var password = $("#password").val();
-
-                if(0==name.length||0==password.length){
-                    $("span.errorMessage").html("请输入账号密码");
-                    $("div.loginErrorMessageDiv").show();
-                    return false;
-                }
-
-                var page = "foreloginAjax";
-                $.get(
-                    page,
-                    {"name":name,"password":password},
-                    function(result){
-                        if("success"==result){
-                            location.reload();
-                        }
-                        else{
-                            $("span.errorMessage").html("账号密码错误");
-                            $("div.loginErrorMessageDiv").show();
-                        }
-                    }
-                );
-
-                return true;
-            });
-
+            //鼠标移动展示产品图片事件
             $("img.smallImage").mouseenter(function(){
                 var bigImageURL = $(this).attr("bigImageURL");
                 $("img.bigImg").attr("src",bigImageURL);
@@ -151,7 +150,7 @@
                     <!--<img src="../img/productSingle_small/${pi.id}.jpg" bigImageURL="../img/productSingle/${pi.id}.jpg" class="smallImage">-->
                 <!--</c:forEach>-->
                 <span ng-repeat="productSingleImage in product[0].productSingleImages |limitTo:5">
-                    <img src="../img/productSingle_small/{{productSingleImage.id}}.jpg" bigImageUrl="../img/productSingle/{{productSingleImage.id}}" class="smallImage">
+                    <img src="../img/productSingle_small/{{productSingleImage.id}}.jpg" bigImageUrl="../img/productSingle/{{productSingleImage.id}}.jpg" class="smallImage">
                 </span>
             </div>
             <div class="img4load hidden" ></div>

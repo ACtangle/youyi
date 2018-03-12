@@ -18,7 +18,7 @@ angular.module('product',[])
     $scope.product = {};
     $scope.product.id = pid;
     //产品返回对象
-    $scope.productInfo = [];
+
 
 
     //判断是否已经登录
@@ -42,10 +42,10 @@ angular.module('product',[])
                 for(var i=0;i<resp.length;i++){
                     $scope.product[i] =resp[i];
                 }
-                alert("成功");
+                // alert("成功");
             })
             .error(function (resp) {
-                console.log($scope.product);
+                // console.log($scope.product);
                 alert("失败");
             })
     }

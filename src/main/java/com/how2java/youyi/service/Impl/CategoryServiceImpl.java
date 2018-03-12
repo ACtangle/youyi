@@ -46,7 +46,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category get(int id) {
+    public Category get(int id)
+    {
         return categoryMapper.selectByPrimaryKey(id);
     }
 
