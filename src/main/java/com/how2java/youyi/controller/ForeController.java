@@ -1,5 +1,6 @@
 package com.how2java.youyi.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.how2java.youyi.comparator.*;
@@ -113,32 +114,10 @@ public class ForeController {
         if(category != null) {
             productService.fill(category);
             productService.setSaleAndReviewNumber(category.getProducts());}
-//        if(null!=sort){
-//            System.out.println("================================================="+sort);
-//            switch(sort){
-//                case "review":
-//                    Collections.sort(category.getProducts(),new ProductReviewComparator());
-//                    break;
-//                case "date" :
-//                    Collections.sort(category.getProducts(),new ProductDateComparator());
-//                    break;
-//
-//                case "saleCount" :
-//                    Collections.sort(category.getProducts(),new ProductSaleCountComparator());
-//                    break;
-//
-//                case "price":
-//                    Collections.sort(category.getProducts(),new ProductPriceComparator());
-//                    break;
-//
-//                case "all":
-//                    Collections.sort(category.getProducts(),new ProductAllComparator());
-//                    break;
-//            }
-//        }
             return category;
         }
 
+        //分类页面下的产品按条件排序
         @RequestMapping(value="fore/showProductsSort",method = RequestMethod.POST)
         @ResponseBody
         public Object showProductsSort(HttpServletRequest request) throws  Exception{
@@ -170,6 +149,7 @@ public class ForeController {
                 case "review":
                     Collections.sort(category.getProducts(),new ProductReviewComparator());
                     break;
+
                 case "date" :
                     Collections.sort(category.getProducts(),new ProductDateComparator());
                     break;
@@ -189,6 +169,23 @@ public class ForeController {
         }
             return category;
         }
+
+
+        //按关键字搜索
+    @RequestMapping(value="fore/searchProduct",method = RequestMethod.POST)
+    @ResponseBody
+    public Object foreSearch(HttpServletRequest request) throws Exception {
+        String requestString = userController.getRequestString(request);
+        JSONObject json = JSONObject.fromObject(requestString);
+        String keyword = "";
+        if (json.containsKey("data")){
+            keyword = json.getString("data");
+        }
+//        PageHelper.offsetPage(5,20);
+        List<Product> products = productService.search(keyword);
+        productService.setSaleAndReviewNumber(products);
+        return products;
+    }
 }
 
 

@@ -12,13 +12,19 @@ angular.module('product',[])
     var pid;
     //url解析获取单个参数值
     pid = parseInt(absUrl.substr(absUrl.indexOf("=")+1));
-    //将参数转为json数据
-    // angular.toJson(pid);
     //产品对象
     $scope.product = {};
     $scope.product.id = pid;
     //产品返回对象
-
+    var searchproducts = localStorage.getItem("searchproducts");
+    $scope.products  = JSON.parse(searchproducts);
+    console.log($scope.products);
+    //跳转路径
+    var locationUrl = $location.absUrl().replace("product.html?pid="+$scope.product.id,"searchResult.html");
+    //临时对象
+    $scope.searchProducts = {};
+    //搜索关键字
+    $scope.search = {};
 
 
     //判断是否已经登录
@@ -46,6 +52,23 @@ angular.module('product',[])
             })
             .error(function (resp) {
                 // console.log($scope.product);
+                alert("失败");
+            })
+    }
+
+    //搜索
+    $scope.searchFunction = function () {
+        $http.post('searchProduct',{data:$scope.search.keyword})
+            .success(function (resp) {
+                for(var i=0 ; i<resp.length ; i++){
+                    $scope.searchProducts[i] = resp[i];
+                    $scope.searchProducts.length = i+1;
+                }
+                var searchproducts = JSON.stringify($scope.searchProducts);
+                localStorage.setItem("searchproducts",searchproducts);
+                location.href = locationUrl;
+            })
+            .error(function (resp) {
                 alert("失败");
             })
     }

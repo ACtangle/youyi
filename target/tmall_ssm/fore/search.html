@@ -5,29 +5,33 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+    <style>
+        .error{
+            color:#a10;
+        }
+        input.error{
+            border:1px solid #a10;
+        }
+    </style>
 </head>
 <body>
-    <a href="home.html?id={{userData.id}}">
+    <a href="home.html">
         <img id="logo" src="../img/site/logo.gif" class="logo">
     </a>
 
-    <form action="foresearch" method="post" >
+    <form name="keywordForm">
         <div class="searchDiv">
-            <input name="keyword" type="text" value="${param.keyword}" placeholder="时尚男鞋  太阳镜 ">
-            <button  type="submit" class="searchButton">搜索</button>
+            <input name="keyword" type="text" ng-model="search.keyword" placeholder="韩版 潮流" required>
+            <button  type="submit" class="searchButton" ng-disabled="keywordForm.keyword.$error.required" ng-click="searchFunction()">搜索</button>
+            <p class="error" ng-if="keywordForm.keyword.$error.required && keywordForm.keyword.$touched">请输入查询商品的关键字</p>
             <div class="searchBelow">
-                <c:forEach items="${cs}" var="c" varStatus="st">
-                    <c:if test="${st.count>=5 and st.count<=8}">
-						<span>
-							<a href="forecategory?cid=${c.id}">
-									${c.name}
-							</a>
-							<c:if test="${st.count!=8}">
-								<span>|</span>
-							</c:if>
-						</span>
-                    </c:if>
-                </c:forEach>
+                <span ng-repeat="category in categorys | limitTo:5">
+                    <span>
+                        <a href="category.html?cid={{category.id}}">
+                            {{category.name}}
+                        </a>
+                    </span>
+                </span>
             </div>
         </div>
     </form>

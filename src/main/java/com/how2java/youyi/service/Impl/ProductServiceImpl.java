@@ -135,4 +135,15 @@ public class ProductServiceImpl implements ProductService {
             setSaleAndReviewNumber(p);
         }
     }
+
+    @Override
+    public List<Product> search(String keyword) {
+        ProductExample example = new ProductExample();
+        example.createCriteria().andNameLike("%" + keyword + "%");
+        example.setOrderByClause("id desc");
+        List result = productMapper.selectByExample(example);
+        setFirstProductImage(result);
+        setCategory(result);
+        return result;
+    }
 }

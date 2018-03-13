@@ -4,7 +4,7 @@
 
 angular.module('index',[])
 
-.controller('indexCtrl',function($scope,$http) {
+.controller('indexCtrl',function($scope,$http,$location) {
 
     //用户信息
     $scope.userData = {};
@@ -17,7 +17,11 @@ angular.module('index',[])
     //分类产品栏展示数目
     $scope.productcount=5;
     //临时对象
-    $scope.tempdata = {};
+    $scope.searchProducts = {};
+    //搜索关键字
+    $scope.search = {};
+    //跳转路径
+    var locationUrl = $location.absUrl().replace("home","searchResult");
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -80,9 +84,20 @@ angular.module('index',[])
             })
     }
 
-    // $scope.showdetail=function(obj){
-    //     $scope.tempdata=angular.copy(obj);
-    //     alert($scope.tempdata.id);
-    //         // $state.go('product',{pid:$scope.tempdata.id});
-    // }
+    //搜索
+    $scope.searchFunction = function () {
+        $http.post('searchProduct',{data:$scope.search.keyword})
+            .success(function (resp) {
+                for(var i=0 ; i<resp.length ; i++){
+                    $scope.searchProducts[i] = resp[i];
+                    $scope.searchProducts.length = i+1;
+                }
+                var searchproducts = JSON.stringify($scope.searchProducts);
+                localStorage.setItem("searchproducts",searchproducts);
+                location.href = locationUrl;
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
 })

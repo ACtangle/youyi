@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="searchProducts">
+
+    <div class="productUnit" ng-repeat="product in products" >
+        <!--<span class="productPrice">{{product.promotePrice}}</span>-->
+        <a href="product.html?pid={{product.id}}">
+            <img class="productImage" src="../img/productSingle/{{product.firstProductImage.id}}.jpg" >
+        </a>
+        <span class="productPrice">{{product.promotePrice|currency:'¥':2}}</span>
+        <a class="productLink" href="product.html?pid={{product.id}}">
+            {{product.subTitle}}/{{product.name}}
+        </a>
+        <a class="tamllLink" href="product.html?pid={{product.id}}">天猫专卖</a>
+        <div class="show1 productInfo">
+            <span class="monthDeal">月成交<span class="productDealNumber">{{product.saleCount}}笔</span></span>
+            <span class="productReview">评价<span class="productReviewNumber">{{product.reviewCount}}</span></span>
+            <span class="wangwang"><img src="../img/site/wangwang.png" ></span>
+        </div>
+    </div>
+
+
+    <div ng-if="products.length == null">
+        <div class="noMatch">没有满足条件的产品<div>
+    </div>
+
+    <div style="clear:both"></div>
+</div>
+</div>
+</body>
+</html>

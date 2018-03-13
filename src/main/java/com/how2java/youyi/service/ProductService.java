@@ -19,6 +19,6 @@ public interface ProductService {
     void fill(Category category);
     void fillByRow(List<Category> categories);
     void setSaleAndReviewNumber(Product p);
-
     void setSaleAndReviewNumber(List<Product> ps);
+    List<Product> search(String keyword);
 }
