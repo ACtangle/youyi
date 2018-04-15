@@ -25,7 +25,10 @@ angular.module('product',[])
     $scope.searchProducts = {};
     //搜索关键字
     $scope.search = {};
-
+    //订单项对象
+    $scope.orderItem={};
+    //临时对象
+    $scope.tempdatas=[];
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -71,5 +74,27 @@ angular.module('product',[])
             .error(function (resp) {
                 alert("失败");
             })
+    }
+
+    //立即购买(单品)
+    $scope.jump=function(obj){
+        if(sessionStorage.getItem("name") == null && sessionStorage.getItem("password") == null) {
+            alert("请先登录后购买商品");
+            window.location.href="userLogin.html";
+        }else {
+            $scope.tempdatas = angular.copy(obj);
+            $scope.num = document.getElementById("count").value;
+            $http.post("buyone",{
+                "user":$scope.userData,
+                "pid":$scope.product.id,
+                "num":$scope.num
+             }
+            ).success(function (resp) {
+                window.location.href = "buy.html?oiid=" + resp ;
+            }).error(function (resp) {
+                alert("失败");
+            })
+
+        }
     }
 })

@@ -58,7 +58,7 @@ angular.module('category',[])
             "data":$scope.category,"sort":$scope.productSort}
         ).success(function (resp) {
             $scope.category = resp;
-            alert("成功")
+            // alert("成功")
         }).error(function (resp) {
             alert("失败");
         })

@@ -141,7 +141,7 @@
 	<div class="orderItemTotalSumDiv">
 		<div class="pull-right"> 
 			<span>实付款：</span>
-			<span class="orderItemTotalSumSpan">￥<fmt:formatNumber type="number" value="${total}" minFractionDigits="2"/></span>
+			<span class="orderItemTotalSumSpan">￥<fmt:formatNumber type="number" value="${total}" minFractionDigits="3"/></span>
 		</div>
 	</div>
 	

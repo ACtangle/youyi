@@ -2,27 +2,19 @@ package com.how2java.youyi.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.how2java.youyi.comparator.*;
 import com.how2java.youyi.pojo.*;
 import com.how2java.youyi.service.*;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -170,8 +162,8 @@ public class ForeController {
             return category;
         }
 
-
-        //按关键字搜索
+        //搜索功能
+        //按关键字模糊查询
     @RequestMapping(value="fore/searchProduct",method = RequestMethod.POST)
     @ResponseBody
     public Object foreSearch(HttpServletRequest request) throws Exception {
@@ -185,6 +177,78 @@ public class ForeController {
         List<Product> products = productService.search(keyword);
         productService.setSaleAndReviewNumber(products);
         return products;
+    }
+
+        //立即购买商品
+        @RequestMapping(value="fore/buyone",method=RequestMethod.POST)
+        @ResponseBody
+        public Object buyone(HttpServletRequest request) throws Exception{
+            String requestString = userController.getRequestString(request);
+            JSONObject json = JSONObject.fromObject(requestString);
+            int pid;int num;
+            pid = json.getInt("pid");
+            num = json.getInt("num");
+            User user = null;Product p = null;
+            if(json.containsKey("user")){
+                Gson gson = new Gson();
+                user = gson.fromJson(json.getString("user"),User.class);
+            }
+            if(json.containsKey("pid") && json.containsKey("num")) {
+                p = productService.get(pid);
+            }
+            int oiid = 0;
+            boolean found = false;
+            List<OrderItem> ois = orderItemService.listByUser(user.getId());
+            for (OrderItem oi : ois) {
+                if(oi.getProduct().getId().intValue() == p.getId().intValue()){
+                    oi.setNumber(oi.getNumber()+num);
+                    orderItemService.update(oi);
+                    found = true;
+                    oiid = oi.getId();
+                    break;
+                }
+            }
+            if(!found){
+                OrderItem oi = new OrderItem();
+                oi.setUid(user.getId());
+                oi.setNumber(num);
+                oi.setPid(pid);
+                orderItemService.add(oi);
+                oiid = oi.getId();
+            }
+            return oiid;
+        }
+
+    //展示用户所有订单项数据
+    @RequestMapping(value="fore/onebuy",method=RequestMethod.POST)
+    @ResponseBody
+    public Object buy(HttpServletRequest request) throws Exception {
+        String requestString = userController.getRequestString(request);
+        JSONObject json = JSONObject.fromObject(requestString);
+        List<OrderItem> ois = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
+//        String[] oiidArray ;
+        int oiid;
+        float total = 0;
+
+//        for (String strid : oiidArray)
+//            {
+//                int id = Integer.parseInt(strid);
+//                OrderItem oi= orderItemService.get(id);
+//                total +=oi.getProduct().getPromotePrice()*oi.getNumber();
+//                ois.add(oi);
+//            }
+
+        if (json.containsKey("data")) {
+
+            oiid = Integer.parseInt(JSONObject.fromObject(json.getString("data")).getString("id"));
+            OrderItem oi = orderItemService.get(oiid);
+            total += oi.getProduct().getPromotePrice() * oi.getNumber();
+            ois.add(oi);
+        }
+        list.add(ois);
+        list.add(total);
+        return list;
     }
 }
 
