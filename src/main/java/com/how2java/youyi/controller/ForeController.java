@@ -250,6 +250,68 @@ public class ForeController {
         list.add(total);
         return list;
     }
+
+    //加入购物车
+    @RequestMapping(value="fore/addCart",method=RequestMethod.POST)
+    @ResponseBody
+    public Object addCart(HttpServletRequest request) throws Exception {
+        String requestString = userController.getRequestString(request);
+        JSONObject json = JSONObject.fromObject(requestString);
+        int pid;int num;
+        List list = new ArrayList();
+        pid = json.getInt("pid");
+        num = json.getInt("num");
+        User user = null;Product p = null;
+        if(json.containsKey("user")){
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("user"),User.class);
+        }
+        if(json.containsKey("pid") && json.containsKey("num")) {
+            p = productService.get(pid);
+        }
+        boolean found = false;
+
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        for (OrderItem oi : ois) {
+            if(oi.getProduct().getId().intValue()==p.getId().intValue()){
+                oi.setNumber(oi.getNumber()+num);
+                orderItemService.update(oi);
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            OrderItem oi = new OrderItem();
+            oi.setUid(user.getId());
+            oi.setNumber(num);
+            oi.setPid(pid);
+            orderItemService.add(oi);
+        }
+
+        list.add("success");
+        return list;
+    }
+
+
+    //
+    @RequestMapping(value="cart",method=RequestMethod.POST)
+    @ResponseBody
+    public Object cart( HttpServletRequest request ) throws Exception {
+        String requestString =userController.getRequestString(request);
+        JSONObject json = JSONObject.fromObject(requestString);
+        User user = null;
+        List<OrderItem> ois = new ArrayList<OrderItem>();
+        if(json.containsKey("user")) {
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("user"),User.class);
+            if(null != user) {
+                ois = orderItemService.listByUser(user.getId());
+            }
+        }
+        return ois;
+    }
+
+
 }
 
 
