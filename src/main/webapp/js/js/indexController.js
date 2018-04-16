@@ -20,6 +20,8 @@ angular.module('index',[])
     $scope.searchProducts = {};
     //搜索关键字
     $scope.search = {};
+    //购物车数量
+    $scope.cartCount = {};
     //跳转路径
     var locationUrl = $location.absUrl().replace("home","searchResult");
 
@@ -100,4 +102,21 @@ angular.module('index',[])
                 alert("失败");
             })
     }
+
+    //展示购物车数据列表
+    $scope.showOrderItems = function() {
+        $http.post('showCart',{user:$scope.userData})
+            .success(function(resp) {
+                $scope.cartCount = localStorage.getItem("cartCount");
+                // for(var i=0 ;i<resp.length; i++) {
+                //     $scope.userOrderItems = resp;
+                //     localStorage.setItem("cartCount",resp.length);
+                // }
+                // alert("成功");
+            })
+            .error(function(resp) {
+                // alert("操作错误");
+            })
+    }
+    $scope.showOrderItems();
 })

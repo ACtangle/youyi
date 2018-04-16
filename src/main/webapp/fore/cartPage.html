@@ -228,6 +228,7 @@
 
     <div class="cartProductList">
         <table class="cartProductTable">
+
             <thead>
             <tr>
                 <th class="selectAndImage">
@@ -242,17 +243,17 @@
                 <th class="operation">操作</th>
             </tr>
             </thead>
+
             <tbody>
-            <c:forEach items="${ois }" var="oi">
-                <tr oiid="${oi.id}" class="cartProductItemTR">
+                <tr oiid="{{oi.id}}"  ng-repeat="oi in userOrderItems" class="cartProductItemTR">
                     <td>
-                        <img selectit="false" oiid="${oi.id}" class="cartProductItemIfSelected" src="../img/site/cartNotSelected.png">
+                        <img selectit="false" oiid="{{oi.id}}" class="cartProductItemIfSelected" src="../img/site/cartNotSelected.png">
                         <a style="display:none" href="#nowhere"><img src="../img/site/cartSelected.png"></a>
-                        <img class="cartProductImg"  src="../img/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
+                        <img class="cartProductImg"  src="../img/productSingle_middle/{{oi.product.firstProductImage.id}}.jpg">
                     </td>
                     <td>
                         <div class="cartProductLinkOutDiv">
-                            <a href="product.html?pid=${oi.product.id}" class="cartProductLink">${oi.product.name}</a>
+                            <a href="product.html?pid={{oi.product.id}}" class="cartProductLink"><strong>[</strong>&nbsp;{{oi.product.subTitle}}&nbsp;<strong>]</strong>&nbsp;&nbsp;<span style="color: #b00000">{{oi.product.name}}</span></a>
                             <div class="cartProductLinkInnerDiv">
                                 <img src="../img/site/creditcard.png" title="支持信用卡支付">
                                 <img src="../img/site/7day.png" title="消费者保障服务,承诺7天退货">
@@ -262,32 +263,31 @@
 
                     </td>
                     <td>
-                        <span class="cartProductItemOringalPrice">￥${oi.product.originalPrice}</span>
-                        <span  class="cartProductItemPromotionPrice">￥${oi.product.promotePrice}</span>
+                        <span class="cartProductItemOringalPrice">{{oi.product.originalPrice|currency:'￥':2}}</span>
+                        <span  class="cartProductItemPromotionPrice">{{oi.product.promotePrice|currency:'￥':2}}</span>
 
                     </td>
                     <td>
 
                         <div class="cartProductChangeNumberDiv">
-                            <span class="hidden orderItemStock " pid="${oi.product.id}">${oi.product.stock}</span>
-                            <span class="hidden orderItemPromotePrice " pid="${oi.product.id}">${oi.product.promotePrice}</span>
-                            <a  pid="${oi.product.id}" class="numberMinus" href="#nowhere">-</a>
-                            <input pid="${oi.product.id}" oiid="${oi.id}" class="orderItemNumberSetting" autocomplete="off" value="${oi.number}">
-                            <a  stock="${oi.product.stock}" pid="${oi.product.id}" class="numberPlus" href="#nowhere">+</a>
+                            <span class="hidden orderItemStock " pid="{{oi.product.id}}">{{oi.product.stock}}</span>
+                            <span class="hidden orderItemPromotePrice " pid="{{oi.product.id}}">{{oi.product.promotePrice}}</span>
+                            <a  pid="{{oi.product.id}}" class="numberMinus" href="#nowhere">-</a>
+                            <input pid="{{oi.product.id}}" oiid="{{oi.id}}" class="orderItemNumberSetting" autocomplete="off" value="{{oi.number}}">
+                            <a  stock="{{oi.product.stock}}" pid="{{oi.product.id}}" class="numberPlus" href="#nowhere">+</a>
                         </div>
 
                     </td>
                     <td >
-							<span class="cartProductItemSmallSumPrice" oiid="${oi.id}" pid="${oi.product.id}" >
-							￥<fmt:formatNumber type="number" value="${oi.product.promotePrice*oi.number}" minFractionDigits="2"/>
+							<span class="cartProductItemSmallSumPrice" oiid="{{oi.id}}" pid="{{oi.product.id}}" >
+							{{oi.product.promotePrice*oi.number|currency:'￥':2}}
 							</span>
 
                     </td>
                     <td>
-                        <a class="deleteOrderItem" oiid="${oi.id}"  href="#nowhere">删除</a>
+                        <a class="deleteOrderItem" oiid="{{oi.id}}"  href="#nowhere">删除</a>
                     </td>
                 </tr>
-            </c:forEach>
             </tbody>
 
         </table>

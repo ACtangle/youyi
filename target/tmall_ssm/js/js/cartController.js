@@ -14,6 +14,12 @@ angular.module('cart',[])
     $scope.search = {};
     //跳转路径
     var locationUrl = $location.absUrl().replace("cart","searchResult");
+    //用户订单项数组
+    $scope.userOrderItems = [];
+    //购物车数量
+    $scope.cartCount = localStorage.getItem("cartCount");
+
+
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -45,4 +51,20 @@ angular.module('cart',[])
             })
     }
 
+    //展示购物车数据列表
+    $scope.showOrderItems = function() {
+        $http.post('showCart',{user:$scope.userData})
+            .success(function(resp) {
+                // $scope.cartCount = localStorage.getItem("cartCount");
+                for(var i=0 ;i<resp.length; i++) {
+                    $scope.userOrderItems = resp;
+                    // localStorage.setItem("cartCount",resp.length);
+                }
+                // alert("成功");
+            })
+            .error(function(resp) {
+                // alert("操作错误");
+            })
+    }
+    $scope.showOrderItems();
 })

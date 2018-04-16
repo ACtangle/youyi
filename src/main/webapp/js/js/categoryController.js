@@ -15,7 +15,8 @@ angular.module('category',[])
     cid = parseInt(absUrl.substr(absUrl.indexOf("=")+1));
     //url解析获取单个参数值
     // sort = absUrl.substr(absUrl.indexOf("&sort=")+6);
-
+    //购物车数量
+    $scope.cartCount = localStorage.getItem("cartCount");
     //将参数转为json数据
     // angular.toJson(pid);
     //产品对象

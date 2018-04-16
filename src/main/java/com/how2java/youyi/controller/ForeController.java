@@ -294,13 +294,13 @@ public class ForeController {
 
 
     //
-    @RequestMapping(value="cart",method=RequestMethod.POST)
+    @RequestMapping(value="fore/showCart",method=RequestMethod.POST)
     @ResponseBody
     public Object cart( HttpServletRequest request ) throws Exception {
         String requestString =userController.getRequestString(request);
         JSONObject json = JSONObject.fromObject(requestString);
         User user = null;
-        List<OrderItem> ois = new ArrayList<OrderItem>();
+        List<OrderItem> ois = new ArrayList<>();
         if(json.containsKey("user")) {
             Gson gson = new Gson();
             user = gson.fromJson(json.getString("user"),User.class);
@@ -310,8 +310,6 @@ public class ForeController {
         }
         return ois;
     }
-
-
 }
 
 

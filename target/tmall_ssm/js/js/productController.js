@@ -29,6 +29,11 @@ angular.module('product',[])
     $scope.orderItem={};
     //临时对象
     $scope.tempdatas=[];
+    //购物车数量
+    $scope.cartCount = localStorage.getItem("cartCount");
+
+
+
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
         $scope.userData.id = sessionStorage.getItem("id");
