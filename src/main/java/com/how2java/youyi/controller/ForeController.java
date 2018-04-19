@@ -293,7 +293,7 @@ public class ForeController {
     }
 
 
-    //
+    //展示购物车列表
     @RequestMapping(value="fore/showCart",method=RequestMethod.POST)
     @ResponseBody
     public Object cart( HttpServletRequest request ) throws Exception {

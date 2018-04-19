@@ -16,10 +16,11 @@
 
         $("a.deleteOrderItem").click(function(){
             deleteOrderItem = false;
-            var oiid = $(this).attr("oiid")
+            var oiid = $(this).attr("oiid");
             deleteOrderItemid = oiid;
             $("#deleteConfirmModal").modal('show');
         });
+
         $("button.deleteConfirmButton").click(function(){
             deleteOrderItem = true;
             $("#deleteConfirmModal").modal('hide');
@@ -60,6 +61,7 @@
             syncCreateOrderButton();
             calcCartSumPriceAndNumber();
         });
+
         $("img.selectAllItem").click(function(){
             var selectit = $(this).attr("selectit")
             if("selectit"==selectit){
@@ -99,7 +101,6 @@
                 num = 1;
             if(num>stock)
                 num = stock;
-
             syncPrice(pid,num,price);
         });
 

@@ -27,11 +27,15 @@ angular.module('cart',[])
         $scope.userData.name = sessionStorage.getItem("name");
         $scope.userData.password = sessionStorage.getItem("password");
         $scope.flag = false;
+    }else {
+        localStorage.removeItem("cartCount");
     }
+
 
     //退出登录
     $scope.loggout = function () {
         sessionStorage.clear();
+        localStorage.removeItem("cartCount");
     }
 
     //搜索
@@ -58,8 +62,9 @@ angular.module('cart',[])
                 // $scope.cartCount = localStorage.getItem("cartCount");
                 for(var i=0 ;i<resp.length; i++) {
                     $scope.userOrderItems = resp;
-                    // localStorage.setItem("cartCount",resp.length);
+                    localStorage.getItem("cartCount",resp.length);
                 }
+                // $scope.cartCount = localStorage.getItem("cartCount");
                 // alert("成功");
             })
             .error(function(resp) {

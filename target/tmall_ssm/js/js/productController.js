@@ -40,11 +40,14 @@ angular.module('product',[])
         $scope.userData.name = sessionStorage.getItem("name");
         $scope.userData.password = sessionStorage.getItem("password");
         $scope.flag = false;
+    }else {
+        localStorage.removeItem("cartCount");
     }
 
     //退出登录
     $scope.loggout = function () {
         sessionStorage.clear();
+        localStorage.removeItem("cartCount");
     }
 
 
@@ -102,6 +105,8 @@ angular.module('product',[])
         }
     }
 
+
+    //加入购物车
     $scope.addCart = function(obj){
         if(sessionStorage.getItem("name") == null && sessionStorage.getItem("password") == null){
             alert("请先登录后购买商品");
@@ -122,4 +127,22 @@ angular.module('product',[])
             })
         }
     }
+
+    //展示购物车数据列表
+    $scope.showOrderItems = function() {
+        $http.post('showCart',{user:$scope.userData})
+            .success(function(resp) {
+                // $scope.cartCount = localStorage.getItem("cartCount");
+                for(var i=0 ;i<resp.length; i++) {
+                    $scope.userOrderItems = resp;
+                    localStorage.getItem("cartCount",resp.length);
+                }
+                // alert("成功");
+            })
+            .error(function(resp) {
+                // alert("操作错误");
+            })
+    }
+    $scope.showOrderItems();
+
 })

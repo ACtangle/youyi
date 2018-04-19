@@ -31,11 +31,15 @@ angular.module('index',[])
         $scope.userData.name = sessionStorage.getItem("name");
         $scope.userData.password = sessionStorage.getItem("password");
         $scope.flag = false;
+    }else {
+        localStorage.removeItem("cartCount");
     }
     //退出登录
     $scope.loggout = function () {
         sessionStorage.clear();
+        localStorage.removeItem("cartCount");
     }
+
 
     //轮播图上方到导航栏展示
     $scope.showCategory = function () {
@@ -107,10 +111,11 @@ angular.module('index',[])
     $scope.showOrderItems = function() {
         $http.post('showCart',{user:$scope.userData})
             .success(function(resp) {
-                $scope.cartCount = localStorage.getItem("cartCount");
+
                 // for(var i=0 ;i<resp.length; i++) {
                 //     $scope.userOrderItems = resp;
-                //     localStorage.setItem("cartCount",resp.length);
+                localStorage.setItem("cartCount",resp.length);
+                $scope.cartCount = localStorage.getItem("cartCount");
                 // }
                 // alert("成功");
             })

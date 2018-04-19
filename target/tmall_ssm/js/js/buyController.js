@@ -1,7 +1,7 @@
 
 angular.module('buy',[])
 .controller('buyCtrl',function ($scope,$location,$http) {
-    $scope.test = 346;
+    // $scope.test = 346;
     //用户信息
     $scope.userData = {};
     //判断是否登录，默认为true显示login标签友好提示
@@ -16,6 +16,10 @@ angular.module('buy',[])
     $scope.orderItem.id = oiid;
     $scope.orderItemProduct = [];
     $scope.total = {};
+    //用户订单项数组
+    $scope.userOrderItems = [];
+    //购物车数量
+    $scope.cartCount = localStorage.getItem("cartCount");
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -43,7 +47,7 @@ angular.module('buy',[])
                     console.log($scope.orderItemProduct);
 
                 console.log($scope.total);
-                alert("成功");
+                // alert("成功");
             })
             .error(function (resp) {
                 // console.log($scope.orderItem);
@@ -51,4 +55,21 @@ angular.module('buy',[])
             })
     }
     $scope.showOrderItem();
+
+    $scope.showOrderItems = function() {
+        $http.post('showCart',{user:$scope.userData})
+            .success(function(resp) {
+                // $scope.cartCount = localStorage.getItem("cartCount");
+                for(var i=0 ;i<resp.length; i++) {
+                    $scope.userOrderItems = resp;
+                    localStorage.getItem("cartCount",resp.length);
+                }
+                // $scope.cartCount = localStorage.getItem("cartCount");
+                // alert("成功");
+            })
+            .error(function(resp) {
+                // alert("操作错误");
+            })
+    }
+    $scope.showOrderItems();
 })
