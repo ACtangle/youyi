@@ -5,11 +5,13 @@ import com.google.gson.Gson;
 import com.how2java.youyi.comparator.*;
 import com.how2java.youyi.pojo.*;
 import com.how2java.youyi.service.*;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -227,20 +229,28 @@ public class ForeController {
         JSONObject json = JSONObject.fromObject(requestString);
         List<OrderItem> ois = new ArrayList<>();
         List<Object> list = new ArrayList<>();
-//        String[] oiidArray ;
+
+        int[] oiidsArray = null;
         int oiid;
         float total = 0;
 
-//        for (String strid : oiidArray)
-//            {
-//                int id = Integer.parseInt(strid);
-//                OrderItem oi= orderItemService.get(id);
-//                total +=oi.getProduct().getPromotePrice()*oi.getNumber();
-//                ois.add(oi);
-//            }
+        if(json.containsKey("oiids")){
+            JSONArray oiids = json.getJSONArray("oiids");
+            oiidsArray = new int[oiids.size()];
+            System.out.println(oiids);
+            for (int i=0;i<oiids.size();i++) {
+                oiidsArray[i] = oiids.getInt(i);
+            }
+
+            for (int id : oiidsArray)
+            {
+                OrderItem oi= orderItemService.get(id);
+                total +=oi.getProduct().getPromotePrice()*oi.getNumber();
+                ois.add(oi);
+            }
+        }
 
         if (json.containsKey("data")) {
-
             oiid = Integer.parseInt(JSONObject.fromObject(json.getString("data")).getString("id"));
             OrderItem oi = orderItemService.get(oiid);
             total += oi.getProduct().getPromotePrice() * oi.getNumber();

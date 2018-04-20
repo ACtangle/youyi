@@ -56,6 +56,7 @@ angular.module('buy',[])
     }
     $scope.showOrderItem();
 
+    //获取用户购物车件数
     $scope.showOrderItems = function() {
         $http.post('showCart',{user:$scope.userData})
             .success(function(resp) {
@@ -72,4 +73,27 @@ angular.module('buy',[])
             })
     }
     $scope.showOrderItems();
+
+    //获取从购物车点击过来的oiid所有值并放入params数组内
+    getUrlParams = function() {
+        var locationUrl = $location.absUrl();
+        var paramsUrl = locationUrl.substring(locationUrl.indexOf('?')+1);
+        $scope.params =paramsUrl.split("&oiid=");
+        for(var i = 1;i<$scope.params.length;i++) {
+            $scope.params[i] = parseInt($scope.params[i]);
+        }
+        $scope.params[0]=oiid;
+        console.log($scope.params);
+        $http.post('onebuy',{"oiids":$scope.params})
+            .success(function (resp) {
+                $scope.orderItemProduct = resp[0];
+                $scope.total = resp[1];
+                // alert("成功");
+            })
+            .error(function () {
+                alert("失败");
+            })
+    }
+    getUrlParams();
+
 })

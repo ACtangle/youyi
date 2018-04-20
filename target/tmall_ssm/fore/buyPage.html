@@ -75,9 +75,9 @@
                     <td></td>
                 </tr>
                 </thead>
-                <tbody class="productListTableTbody">
+                <tbody class="productListTableTbody" ng-repeat="oi in orderItemProduct">
                 <!--<c:forEach items="${ois}" var="oi" varStatus="st" >-->
-                    <tr class="orderItemTR" ng-repeat="oi in orderItemProduct">
+                    <tr class="orderItemTR" >
                         <td class="orderItemFirstTD"><img class="orderItemImg" src="../img/productSingle_middle/{{oi.product.firstProductImage.id}}.jpg"></td>
                         <td class="orderItemProductInfo">
                             <a  href="foreproduct?pid={{oi.product.id}}" class="orderItemProductLink">
