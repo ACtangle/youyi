@@ -1,6 +1,7 @@
 package com.how2java.youyi.service;
 
 import com.how2java.youyi.pojo.Order;
+import com.how2java.youyi.pojo.OrderItem;
 
 import java.util.List;
 
@@ -16,9 +17,11 @@ public interface OrderService {
     String delete = "delete";
 
     void add(Order c);
-
+    float add(Order c,List<OrderItem> ois);
     void delete(int id);
     void update(Order c);
     Order get(int id);
     List list();
+
+
 }

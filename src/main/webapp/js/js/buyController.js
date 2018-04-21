@@ -8,6 +8,9 @@ angular.module('buy',[])
     $scope.flag = true;
     //获取当前路径的绝对路径
     var absUrl = $location.absUrl();
+    //父路径
+    var url = absUrl.split(absUrl.substr(absUrl.indexOf("?")))[0];
+    // console.log(url);
     //订单项参数
     var oiid = parseInt(absUrl.substr(absUrl.indexOf("=")+1));
     // console.log(oiid);
@@ -20,7 +23,18 @@ angular.module('buy',[])
     $scope.userOrderItems = [];
     //购物车数量
     $scope.cartCount = localStorage.getItem("cartCount");
+    //用户地理位置信息(地址,邮政编码,收件人名字,手机号码)
+    $scope.userInfo = {
+        address:"",
+        postCode:"",
+        receiver:"",
+        mobile:""
+    };
 
+    // 广州市花都区新华街道学府路一号华南理工大学广州学院
+    // 510800
+    // 李毓翰
+    // 18826237620
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
         $scope.userData.id = sessionStorage.getItem("id");
@@ -29,10 +43,14 @@ angular.module('buy',[])
         $scope.flag = false;
     }
 
+
+
     //退出登录
     $scope.loggout = function () {
         sessionStorage.clear();
     }
+
+
 
     //获取订单项id并展示所购买的产品信息
     $scope.showOrderItem = function () {
@@ -44,9 +62,9 @@ angular.module('buy',[])
 
                     $scope.orderItemProduct = resp[0];
                     $scope.total = resp[1];
-                    console.log($scope.orderItemProduct);
+                    // console.log($scope.orderItemProduct);
 
-                console.log($scope.total);
+                // console.log($scope.total);
                 // alert("成功");
             })
             .error(function (resp) {
@@ -55,6 +73,8 @@ angular.module('buy',[])
             })
     }
     $scope.showOrderItem();
+
+
 
     //获取用户购物车件数
     $scope.showOrderItems = function() {
@@ -73,6 +93,8 @@ angular.module('buy',[])
             })
     }
     $scope.showOrderItems();
+
+
 
     //获取从购物车点击过来的oiid所有值并放入params数组内
     getUrlParams = function() {
@@ -96,4 +118,23 @@ angular.module('buy',[])
     }
     getUrlParams();
 
+
+    //提交订单
+    $scope.addOrder = function () {
+        $http.post('createOrder',{
+            "user":$scope.userData,
+            "oiids":$scope.params,
+            "userInfo":$scope.userInfo
+        })
+            .success(function (resp) {
+                // console.log($scope.userInfo);
+                var oid=resp[0].id;
+                var total = resp[1];
+                location.href= url.replace("buy","alipay")+ "?oid=" + oid + "&total=" + total;
+                // alert("成功");
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
 })

@@ -7,6 +7,7 @@ import com.how2java.youyi.pojo.*;
 import com.how2java.youyi.service.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,6 +49,9 @@ public class ForeController {
     @Autowired
     OrderItemService orderItemService;
 
+
+
+
     //分类及其分类下产品数据源
     @RequestMapping(value="fore/showCategorys",method=RequestMethod.GET)
     @ResponseBody
@@ -55,6 +61,9 @@ public class ForeController {
         productService.fillByRow(categories);
         return categories;
     }
+
+
+
 
     //单个产品相关信息
     @RequestMapping(value="fore/showProduct",method=RequestMethod.POST)
@@ -85,6 +94,9 @@ public class ForeController {
         return list;
     }
 
+
+
+
     //分类产品页面
     @RequestMapping(value = "fore/showCategoryProducts",method = RequestMethod.POST)
     @ResponseBody
@@ -110,6 +122,10 @@ public class ForeController {
             productService.setSaleAndReviewNumber(category.getProducts());}
             return category;
         }
+
+
+
+
 
         //分类页面下的产品按条件排序
         @RequestMapping(value="fore/showProductsSort",method = RequestMethod.POST)
@@ -164,6 +180,9 @@ public class ForeController {
             return category;
         }
 
+
+
+
         //搜索功能
         //按关键字模糊查询
     @RequestMapping(value="fore/searchProduct",method = RequestMethod.POST)
@@ -180,6 +199,9 @@ public class ForeController {
         productService.setSaleAndReviewNumber(products);
         return products;
     }
+
+
+
 
         //立即购买商品
         @RequestMapping(value="fore/buyone",method=RequestMethod.POST)
@@ -221,6 +243,9 @@ public class ForeController {
             return oiid;
         }
 
+
+
+
     //展示用户所有订单项数据
     @RequestMapping(value="fore/onebuy",method=RequestMethod.POST)
     @ResponseBody
@@ -260,6 +285,9 @@ public class ForeController {
         list.add(total);
         return list;
     }
+
+
+
 
     //加入购物车
     @RequestMapping(value="fore/addCart",method=RequestMethod.POST)
@@ -320,6 +348,59 @@ public class ForeController {
         }
         return ois;
     }
+
+    //
+    @RequestMapping(value="fore/createOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public Object createOrder( HttpServletRequest httpServletRequest) throws Exception{
+        Order order = new Order();
+        String request = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(request);
+        User user = null;
+        float total = 0;
+        int[] oiidsArray = null;
+        JSONArray oiids;
+        List<OrderItem> ois = new ArrayList<OrderItem>();
+        List<Object> list = new ArrayList<>();
+        JSONObject jsonForUserInfo;
+        if (json.containsKey("userInfo")) {
+            jsonForUserInfo = (JSONObject)json.get("userInfo");
+            order.setAddress(jsonForUserInfo.getString("address"));
+            if(jsonForUserInfo.getString("postCode") != null) {
+                order.setPost(jsonForUserInfo.getString("postCode"));
+            }else{
+                order.setPost(null);
+            }
+            order.setReceiver(jsonForUserInfo.getString("receiver"));
+            order.setMobile(jsonForUserInfo.getString("mobile"));
+        }
+        if(json.containsKey("user")) {
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("user"),User.class);
+            if(null != user) {
+                String orderCode = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + RandomUtils.nextInt(10000);
+                order.setOrderCode(orderCode);
+                order.setCreateDate(new Date());
+                order.setUid(user.getId());
+                order.setStatus(OrderService.waitPay);
+                if(json.containsKey("oiids")) {
+                    oiids = json.getJSONArray("oiids");
+                    oiidsArray = new int[oiids.size()];
+                    System.out.println(oiids);
+                    for (int i=0;i<oiids.size();i++) {
+                        oiidsArray[i] = oiids.getInt(i);
+                        OrderItem oI =orderItemService.get(oiidsArray[i]);
+                        ois.add(oI);
+                    }
+                    total = orderService.add(order, ois);
+                }
+            }
+        }
+        list.add(order);
+        list.add(total);
+        return list;
+    }
+
 }
 
 

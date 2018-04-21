@@ -3,11 +3,15 @@ package com.how2java.youyi.service.Impl;
 import com.how2java.youyi.mapper.OrderMapper;
 import com.how2java.youyi.pojo.Order;
 import com.how2java.youyi.pojo.OrderExample;
+import com.how2java.youyi.pojo.OrderItem;
 import com.how2java.youyi.pojo.User;
+import com.how2java.youyi.service.OrderItemService;
 import com.how2java.youyi.service.OrderService;
 import com.how2java.youyi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +25,9 @@ public class OrderServiceImp implements OrderService{
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    OrderItemService orderItemService;
 
     @Override
     public void add(Order c) {
@@ -57,5 +64,22 @@ public class OrderServiceImp implements OrderService{
         int uid = o.getUid();
         User u = userService.get(uid);
         o.setUser(u);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED ,rollbackForClassName = "Exception")
+    public float add(Order o, List<OrderItem> ois) {
+        float total = 0;
+        add(o);
+
+//        if(false)
+//            throw new RuntimeException();
+
+        for (OrderItem oi: ois) {
+            oi.setOid(o.getId());
+            orderItemService.update(oi);
+            total+=oi.getProduct().getPromotePrice()*oi.getNumber();
+        }
+        return total;
     }
 }
