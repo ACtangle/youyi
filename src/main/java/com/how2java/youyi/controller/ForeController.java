@@ -349,7 +349,7 @@ public class ForeController {
         return ois;
     }
 
-    //
+    //生成订单
     @RequestMapping(value="fore/createOrder",method = RequestMethod.POST)
     @ResponseBody
     public Object createOrder( HttpServletRequest httpServletRequest) throws Exception{
@@ -401,6 +401,46 @@ public class ForeController {
         return list;
     }
 
+
+
+    //查询订单并返回相关信息
+    @RequestMapping(value="fore/showOrder",method=RequestMethod.POST)
+    @ResponseBody
+    public Object showOrder(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Order order = null;
+        if (json.containsKey("oid")) {
+            int oid = json.getInt("oid");
+            order = orderService.get(oid);
+            order.setStatus(OrderService.waitDelivery);
+            order.setPayDate(new Date());
+            orderService.update(order);
+        }
+        return order;
+    }
+
+
+    //获取订单项数据
+    @RequestMapping(value="fore/showBought",method=RequestMethod.POST)
+    @ResponseBody
+    public Object showBought(HttpServletRequest request) throws Exception {
+        String requestString = userController.getRequestString(request);
+        JSONObject json =  JSONObject.fromObject(requestString);
+        User user = null;
+//        Boolean flag = false;
+        List<Order> orders = new ArrayList<>();
+        if(json.containsKey("userData")) {
+            Gson gson = new Gson();
+            user = gson.fromJson(json.getString("userData"), User.class);
+            if (null != user) {
+//                flag = true;
+                orders = orderService.list(user.getId(),OrderService.delete);
+                orderItemService.fill(orders);
+            }
+        }
+        return orders;
+    }
 }
 
 

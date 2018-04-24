@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="payedDiv">
+    <div class="payedTextDiv">
+        <img src="../img/site/paySuccess.png">
+        <span>您已成功付款</span>
+
+    </div>
+    <div class="payedAddressInfo">
+        <ul>
+            <li>收货地址：{{orderInfo.address}}</li>
+            <li>收件人:{{orderInfo.receiver}}</li>
+            <li>订单状态:{{orderInfo.statusDesc}}</li>
+            <li>实付款：<span class="payedInfoPrice">
+                {{total|currency:'￥':2}}</span>
+            </li>
+            <li>预计三个工作日内送达	</li>
+        </ul>
+
+        <div class="paedCheckLinkDiv">
+            您可以
+            <a class="payedCheckLink" href="bought">查看已买到的宝贝</a>
+            <a class="payedCheckLink" href="bought">查看交易详情 </a>
+        </div>
+
+    </div>
+
+    <div class="payedSeperateLine">
+    </div>
+
+    <div class="warningDiv">
+        <img src="../img/site/warning.png">
+        <b>安全提醒：</b>下单后，<span class="redColor boldWord">用QQ给您发送链接办理退款的都是骗子！</span>天猫不存在系统升级，订单异常等问题，谨防假冒客服电话诈骗！
+    </div>
+</div>
+</body>
+</html>
