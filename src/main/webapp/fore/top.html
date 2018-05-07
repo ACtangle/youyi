@@ -10,9 +10,9 @@
 　<nav class="top ">
     <a href="home.html?id={{userData.id}}">
         <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
-        天猫首页
+        优易首页
     </a>
-    <span>喵，欢迎来天猫</span>
+    <span>铛铛，欢迎来优易</span>
     <span ng-if="flag" ><a href="userLogin.html">你好,请登录</a></span>
     <span ng-if="!flag"><a href="#">欢迎,{{userData.name}}</a></span>
     <span ng-if="!flag"><a href="home.html" ng-click="loggout()">退出登录</a> </span>
@@ -21,8 +21,7 @@
 			<a href="bought.html">我的订单</a>
 			<a href="cart.html">
 			<span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor" ></span>
-                购物车
-                &nbsp;<strong style="color: #b00000" >{{cartCount}}</strong>&nbsp;件
+                购物车&nbsp;<strong style="color: #b00000" ng-if="!flag">{{cartCount}}&nbsp;件</strong>
                 <!--<strong>${cartTotalItemNumber}</strong>件-->
             </a>
     </span>

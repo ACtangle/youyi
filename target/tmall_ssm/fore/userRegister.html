@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html" >
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" >
     <title>用户注册</title>
+    <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
     <style>
         .red{
             background:#a30;
@@ -18,14 +20,19 @@
         input.error{
             border:1px solid #a10;
         }
-        .wrapper {
-            width:300px;
-            margin-top:100px;
-            margin-left:200px;
-        }
+       .wrapper{
+           margin-top:-45px;}
+
+
     </style>
 </head>
 <body ng-app="register" ng-controller="registerCtrl">
+    <div class="simpleLogo">
+        <a href="home.html"><img src="../img/site/logo.png"></a>
+        <img id="loginBackgroundImg" class="loginBackgroundImg" src="../img/site/slider02.jpg">
+    </div>
+    <div class="loginSmallDiv">
+        <div class="wrapper">
     <form name="registerForm" ng-submit="register()">
         <div class="wrapper" >
            <h2>注册</h2>
@@ -61,6 +68,8 @@
             </div>
         </div>
     </form>
+        </div>
+    </div>
 </body>
 <script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
 <script src="../js/angularJs/angular.js"></script>

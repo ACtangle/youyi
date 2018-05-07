@@ -107,7 +107,7 @@
                         <span>订单号: {{order.orderCode}}
 					</span>
                     </td>
-                    <td  colspan="2"><img width="13px" src="../img/site/orderItemTmall.png">优益商场</td>
+                    <td  colspan="2"><img width="13px" src="../img/site/orderItemTmall.png">优易商城</td>
                     <td colspan="1">
                         <!--<a class="wangwanglink" href="#nowhere">-->
                             <!--<div class="orderItemWangWangGif"></div>-->
@@ -127,7 +127,7 @@
                         <td class="orderItemProductInfoPartTD"><img width="80" height="80" src="../img/productSingle_middle/{{oi.product.firstProductImage.id}}.jpg"></td>
                         <td class="orderItemProductInfoPartTD">
                             <div class="orderListItemProductLinkOutDiv">
-                                <a href="product.html?pid={{oi.product.id}}">{{oi.product.name}}</a>
+                                <a href="product.html?pid={{oi.product.id}}">{{oi.product.subTitle}}/<span style="color: #b00000">{{oi.product.name}}</span></a>
                                 <div class="orderListItemProductLinkInnerDiv">
                                     <!--<img src="../img/site/creditcard.png" title="支持信用卡支付">-->
                                     <img src="../img/site/7day.png" title="消费者保障服务,承诺7天退货">
@@ -137,7 +137,7 @@
                         </td>
                         <td  class="orderItemProductInfoPartTD" width="100px">
 
-                            <div class="orderListItemProductOriginalPrice">{{oi.product.originalPrice|currency:'￥':2}}</div>
+                            <div class="orderListItemProductOriginalPrice"><span style="text-decoration: line-through">{{oi.product.originalPrice|currency:'￥':2}}</span></div>
                             <div class="orderListItemProductPrice">{{oi.product.promotePrice|currency:'￥':2}}</div>
 
                         </td>
@@ -145,7 +145,7 @@
                                 <span class="orderListItemNumber">{{oi.number}}</span>
                             </td>
                             <td valign="top" rowspan="{{oi.length}}" width="120px" class="orderListItemProductRealPriceTD orderItemOrderInfoPartTD">
-                                <div class="orderListItemProductRealPrice">{{order.total|currency:'￥':2}}</div>
+                                <div class="orderListItemProductRealPrice"><span style="color:red;">{{oi.product.promotePrice|currency:'￥':2}}</span></div>
                                 <div class="orderListItemPriceWithTransport">(含运费：￥0.00)</div>
                             </td>
                             <td valign="top" rowspan="${fn:length(o.orderItems)}" class="orderListItemButtonTD orderItemOrderInfoPartTD" width="100px">

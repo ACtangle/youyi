@@ -19,8 +19,6 @@ angular.module('cart',[])
     //购物车数量
     $scope.cartCount = localStorage.getItem("cartCount");
 
-
-
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
         $scope.userData.id = sessionStorage.getItem("id");
@@ -69,7 +67,26 @@ angular.module('cart',[])
             })
             .error(function(resp) {
                 // alert("操作错误");
+                alert("请登录");
+                location.href = $location.absUrl().replace("cart","userLogin");
             })
     }
     $scope.showOrderItems();
+
+    //删除购物车订单项
+
+    $scope.deleteOrderItem = function (id) {
+        var oiid = id;
+        $http.post("deleteOrderItem",{
+            "oiid":oiid
+        })
+            .success(function (resp) {
+                if(resp==true)
+                    alert("删除成功");
+                location.reload();
+            })
+            .error(function(resp) {
+                alert("删除失败");
+            })
+    }
 })

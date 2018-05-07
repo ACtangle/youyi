@@ -70,6 +70,7 @@ angular.module('index',[])
             })
     }
 
+
     //获取分类产品的subTitle
     $scope.show = function () {
         $http.get("showCategorys")

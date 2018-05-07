@@ -458,6 +458,21 @@ public class ForeController {
         }
         return flag;
     }
+
+    //购物车删除指定订单项
+    @RequestMapping(value="fore/deleteOrderItem",method = RequestMethod.POST)
+    @ResponseBody
+    public Object deleteOrderItemBy(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString  = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        boolean flag = false;
+        if (json.containsKey("oiid")) {
+            int oiid = json.getInt("oiid");
+            orderItemService.delete(oiid);
+            flag = true;
+        }
+        return flag;
+    }
 }
 
 
