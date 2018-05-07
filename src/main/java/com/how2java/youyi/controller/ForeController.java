@@ -119,9 +119,10 @@ public class ForeController {
 
         if(category != null) {
             productService.fill(category);
-            productService.setSaleAndReviewNumber(category.getProducts());}
-            return category;
+            productService.setSaleAndReviewNumber(category.getProducts());
         }
+        return category;
+    }
 
 
 
@@ -440,6 +441,22 @@ public class ForeController {
             }
         }
         return orders;
+    }
+
+    //删除指定订单
+    @RequestMapping(value="fore/deleteOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public Object deleteOrderBy(HttpServletRequest httpServletRequest) throws Exception{
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Boolean flag = false;
+        if(json.containsKey("oid")){
+            int oid = json.getInt("oid");
+//            System.out.println("===============================================" +oid);
+            orderService.delete(oid);
+            flag = true;
+        }
+        return flag;
     }
 }
 

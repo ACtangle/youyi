@@ -7,7 +7,7 @@
 	
 <div class="aliPayPageDiv">
 	<div class="aliPayPageLogo">
-		<img class="pull-left" src="img/site/simpleLogo.png">
+		<img class="pull-left" src="../img/site/simpleLogo.png">
 		<div style="clear:both"></div>
 	</div>
 	

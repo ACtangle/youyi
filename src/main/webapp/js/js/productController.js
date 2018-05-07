@@ -122,6 +122,7 @@ angular.module('product',[])
             ).success(function (resp) {
                 alert("添加购物车成功");
                 // window.location.href= "cart.html";
+                location.reload();
             }).error(function (resp) {
                 alert("添加失败");
             })
@@ -133,10 +134,12 @@ angular.module('product',[])
         $http.post('showCart',{user:$scope.userData})
             .success(function(resp) {
                 // $scope.cartCount = localStorage.getItem("cartCount");
-                for(var i=0 ;i<resp.length; i++) {
-                    $scope.userOrderItems = resp;
-                    localStorage.getItem("cartCount",resp.length);
-                }
+                // for(var i=0 ;i<resp.length; i++) {
+                //     $scope.userOrderItems = resp;
+                //     localStorage.getItem("cartCount",resp.length);
+                // }
+                localStorage.setItem("cartCount",resp.length);
+                $scope.cartCount = localStorage.getItem("cartCount");
                 // alert("成功");
             })
             .error(function(resp) {

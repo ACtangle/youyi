@@ -47,9 +47,11 @@ angular.module('category',[])
 
     //展示单个分类页
     $scope.showCategoryProducts = function () {
-        $http.post('showCategoryProducts', {
+        $http.post('showCategoryProducts',
+            {
             "data": $scope.category,
-            "sort":$scope.productSort })
+            "sort":$scope.productSort
+            })
             .success(function (resp) {
                $scope.category = resp;
                 // alert("成功");
@@ -59,17 +61,24 @@ angular.module('category',[])
             })
     }
 
+
+    //根据条件降序查询
     $scope.showProductsSort = function (type) {
         $scope.productSort.sort = type;
-        $http.post('showProductsSort',{
-            "data":$scope.category,"sort":$scope.productSort}
-        ).success(function (resp) {
+        $http.post('showProductsSort',
+            {
+            "data":$scope.category,
+            "sort":$scope.productSort
+            })
+            .success(function (resp) {
             $scope.category = resp;
             // alert("成功")
         }).error(function (resp) {
             alert("失败");
         })
     }
+
+
 
     //搜索
     $scope.searchFunction = function () {

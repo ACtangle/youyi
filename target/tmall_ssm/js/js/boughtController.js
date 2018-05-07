@@ -83,8 +83,25 @@ angular.module('bought',[])
                 // alert("成功");
             })
             .error(function (resp) {
-                alert("失败");
+                alert("请登录");
+                location.href = $location.absUrl().replace("bought","userLogin");
             })
     }
     $scope.showOrder();
+
+    //删除指定订单
+    $scope.deleteOrder = function (id) {
+        var oid = id;
+        $http.post("deleteOrder",{
+            "oid":oid
+        })
+            .success(function (resp) {
+                if(resp==true)
+                    alert("删除成功");
+                location.reload();
+            })
+            .error(function(resp) {
+                alert("删除失败");
+            })
+    }
 })
