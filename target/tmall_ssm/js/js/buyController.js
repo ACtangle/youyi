@@ -121,9 +121,9 @@ angular.module('buy',[])
 
     //提交订单
     $scope.addOrder = function () {
-        if($scope.registerForm.$invalid){
-            alert("请检查您的信息");
-        }else{
+        // if($scope.registerForm.$invalid){
+        //     alert("请检查您的信息");
+        // }else{
         $http.post('createOrder',{
             "user":$scope.userData,
             "oiids":$scope.params,
@@ -137,8 +137,8 @@ angular.module('buy',[])
                 // alert("成功");
             })
             .error(function (resp) {
-                alert("失败");
+                alert("请输入必填信息");
             })
         }
-    }
+    // }
 })

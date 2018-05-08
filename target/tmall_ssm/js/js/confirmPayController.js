@@ -1,8 +1,9 @@
 /**
- * Created by melon on 18-4-21.
+ * Created by melon on 18-5-8.
  */
-angular.module('alipay',[])
-.controller('alipayCtrl',function ($scope,$http,$location) {
+angular.module('confirmPay',[])
+.controller('confirmPayCtrl',function ($scope,$location,$http) {
+
     //用户信息
     $scope.userData = {};
     //判断是否登录，默认为true显示login标签友好提示
@@ -12,10 +13,15 @@ angular.module('alipay',[])
     //用户订单项数组
     $scope.userOrderItems = [];
     var oid = $location.absUrl().substr($location.absUrl().indexOf("?")+1).split("&")[0];
-    var total = $location.absUrl().substr($location.absUrl().indexOf("?")+1).split("&")[1];
-    $scope.total = parseFloat(total.substr(total.indexOf("=")+1));
     $scope.oid = parseInt(oid.substr(oid.indexOf("=")+1));
-
+    //临时对象
+    $scope.searchProducts = {};
+    //搜索关键字
+    $scope.search = {};
+    //跳转路径
+    var locationUrl = $location.absUrl().replace("confirmPay","searchResult");
+    //订单
+    $scope.order = {};
 
 
     //判断是否已经登录
@@ -48,6 +54,7 @@ angular.module('alipay',[])
             })
     }
 
+
     //获取用户购物车件数
     $scope.showOrderItems = function() {
         $http.post('showCart',{user:$scope.userData})
@@ -67,5 +74,41 @@ angular.module('alipay',[])
     $scope.showOrderItems();
 
 
+    //确认收货
+    $scope.confirmPay = function () {
+        $http.post('confirmPayFun',{
+            "oid":$scope.oid
+        })
+            .success(function (resp) {
+                if(resp == false) {
+                    alert("操作失败");
+                }else{
+                    $scope.order = resp;
+                    // console.log($scope.order);
+                }
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
+    $scope.confirmPay();
 
+    //确认付款
+    $scope.orderConfirmed = function () {
+        $http.post('orderConfirming',{
+            "oid":$scope.oid
+        })
+            .success(function (resp) {
+                if(resp == true) {
+                    // alert("成功");
+                    location.href = $location.absUrl().replace("confirmPay","orderConfirmed");
+                }else{
+                    alert("请勿重复确认付款");
+                    location.href = $location.absUrl().replace("confirmPay","bought");
+                }
+            })
+            .error(function () {
+                alert("失败");
+            })
+    }
 })

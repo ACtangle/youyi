@@ -31,6 +31,22 @@ angular.module('alipay',[])
         sessionStorage.clear();
     }
 
+    //搜索
+    $scope.searchFunction = function () {
+        $http.post('searchProduct',{data:$scope.search.keyword})
+            .success(function (resp) {
+                for(var i=0 ; i<resp.length ; i++){
+                    $scope.searchProducts[i] = resp[i];
+                    $scope.searchProducts.length = i+1;
+                }
+                var searchproducts = JSON.stringify($scope.searchProducts);
+                localStorage.setItem("searchproducts",searchproducts);
+                location.href = locationUrl;
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
 
     //获取用户购物车件数
     $scope.showOrderItems = function() {

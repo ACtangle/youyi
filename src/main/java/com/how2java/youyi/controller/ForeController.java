@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.how2java.youyi.comparator.*;
 import com.how2java.youyi.pojo.*;
 import com.how2java.youyi.service.*;
+import com.sun.org.apache.regexp.internal.RE;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.math.RandomUtils;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
@@ -469,6 +473,119 @@ public class ForeController {
         if (json.containsKey("oiid")) {
             int oiid = json.getInt("oiid");
             orderItemService.delete(oiid);
+            flag = true;
+        }
+        return flag;
+    }
+
+    //确认收货
+    @RequestMapping(value="fore/confirmPayFun",method = RequestMethod.POST)
+    @ResponseBody
+    public Object confirmPayFunction (HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Order order = null;
+        boolean flag = false;
+        Object object = null;
+        if (json.containsKey("oid")) {
+            int oid  = json.getInt("oid");
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++" + oid);
+            order = orderService.get(oid);
+            if (null != order) {
+                orderItemService.fill(order);
+                flag = true;
+            }
+        }
+        if(flag == true) {
+            object = order;
+        }
+        else{
+            object = flag;
+        }
+        return object;
+    }
+
+    //确认付款
+    @RequestMapping(value = "fore/orderConfirming",method = RequestMethod.POST)
+    @ResponseBody
+    public Object orderConfirmed(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        boolean flag = false;
+        Order order = null;
+        if(json.containsKey("oid")) {
+            int oid = json.getInt("oid");
+            order = orderService.get(oid);
+            if(order.getStatus().equals(OrderService.waitReview)) {
+                flag = false;
+            }else {
+                order.setStatus(OrderService.waitReview);
+                order.setConfirmDate(new Date());
+                orderService.update(order);
+                if (null != order)
+                    flag = true;
+            }
+        }
+        return flag;
+    }
+
+
+    //商品评价展示
+    @RequestMapping(value = "fore/showReview",method = RequestMethod.POST)
+    @ResponseBody
+    public List showReview(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        List list  = new ArrayList();
+        Order order = null;
+        if(json.containsKey("oid")) {
+            int oid = json.getInt("oid");
+            order = orderService.get(oid);
+            orderItemService.fill(order);
+            Product p = order.getOrderItems().get(0).getProduct();
+            List<Review> reviews = reviewService.list(p.getId());
+            productService.setSaleAndReviewNumber(p);
+            list.add(order);
+            list.add(p);
+            list.add(reviews);
+        }
+        return list;
+    }
+
+    //用户评论
+    @RequestMapping(value = "fore/doReview",method = RequestMethod.POST)
+    @ResponseBody
+    public Object doReviewByUser(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Order order = null;
+        Product product = null;
+        User user = null;
+        String content = "";
+        boolean flag = false;
+        int pid = 0;
+        if(json.containsKey("oid")) {
+            int oid = json.getInt("oid");
+            order = orderService.get(oid);
+            order.setStatus(OrderService.finish);
+            orderService.update(order);
+        }
+        if (json.containsKey("pid")) {
+            pid = json.getInt("pid");
+            product = productService.get(pid);
+        }
+        if(json.containsKey("content")) {
+            content = HtmlUtils.htmlEscape(json.getString("content"));
+        }
+        if(json.containsKey("uid")) {
+            int uid = json.getInt("uid");
+            user = userService.get(uid);
+            Review review = new Review();
+            review.setContent(content);
+            review.setPid(pid);
+            review.setCreateDate(new Date());
+            review.setUid(user.getId());
+            reviewService.add(review);
             flag = true;
         }
         return flag;
