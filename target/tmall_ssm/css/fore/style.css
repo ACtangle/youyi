@@ -45,7 +45,8 @@ nav.top span, nav.top a {
 }
 
 nav.top a:hover {
-	color: #C40000;
+	/*color: #C40000;*/
+	color: #0e0e0e;
 }
 
 nav.top {
@@ -63,7 +64,7 @@ nav.top div.row div {
 }
 
 div.searchDiv {
-	background-color: #C40000;
+	background-color: #0e0e0e;
 	width: 400px;
 	margin: 50px auto;
 	padding: 1px;
@@ -82,7 +83,7 @@ div.searchDiv input {
 div.searchDiv button {
 	width: 110px;
 	border: 1px solid transparent;
-	background-color: #C40000;
+	background-color: #0e0e0e;
 	color: white;
 	font-size: 20px;
 	font-weight: bold;
@@ -105,7 +106,8 @@ div.carouselBackgroundDiv{
 }
 
 div.categoryWithCarousel div.headbar {
-	background-color: #DD2727;
+	/*background-color: #DD2727;*/
+	background-color:#0e0e0e;
 }
 
 div.carousel-of-product {
@@ -149,6 +151,12 @@ div.categoryWithCarousel div.eachCategory span {
 	margin-right: 10px;
 }
 
+.logo{
+	width:120px;
+	height:140px;
+	margin-left: 100px;
+}
+
 div.categoryWithCarousel div.eachCategory {
 	/* 	height:30px; */
 	line-height: 30px;
@@ -178,7 +186,8 @@ div.categoryWithCarousel div.rightMenu a {
 
 div.categoryWithCarousel div.head {
 	width: 200px;
-	background-color: #C60A0A;
+	/*background-color: #C60A0A;*/
+	background-color: #0e0e0e;
 	height: 36px;
 	line-height: 36px;
 	font-size: 16px;
@@ -1100,19 +1109,20 @@ div.buyDiv button {
 }
 
 button.buyButton {
-	border: 1px solid #C40000;
+	border: 1px solid #0e0e0e;
 	background-color: #FFEDED;
 	text-align: center;
 	line-height: 40px;
 	font-size: 16px;
 	/* 	font-weight:700; */
-	color: #C40000;
+	/*color: #C40000;*/
+	color:#0e0e0e;
 	font-family: arial;
 }
 
 button.addCartButton {
-	border: 1px solid #C40000;
-	background-color: #C40000;
+	border: 1px solid #0e0e0e;
+	background-color: #0e0e0e;
 	text-align: center;
 	line-height: 40px;
 	font-size: 16px;

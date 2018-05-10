@@ -10,7 +10,7 @@
 
     <input type="hidden" ng-init="show()">
     <div class="homepageCategoryProducts">
-        <div class="eachHomepageCategoryProducts" ng-repeat="category in categoryss" >
+        <div class="eachHomepageCategoryProducts" ng-repeat="category in categoryss|limitTo:6" >
             <div class="left-mark"></div>
             <span class="categoryTitle" ng-bind="category.name"></span>
             <span><a href="category.html?cid={{category.id}}"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....查看更多</a></span>
@@ -19,7 +19,7 @@
                 <a href="product.html?pid={{product.id}}"><img width="100px" src="../img/productSingle_middle/{{product.firstProductImage.id}}.jpg" ></a>
                 <!--<a class="productItemDescLink" href="foreproduct.html?pid={{product.id}}">-->
                 <a class="productItemDescLink">
-                    <span class="productItemDesc">[热销]{{product.subTitle}}/{{product.name}}</span>
+                    <span class="productItemDesc" ><span style="color: #942a25">[热销]</span>{{product.subTitle}}/{{product.name}}</span>
                 </a>
                 <span>&nbsp;</span>
                 <span class="productPrice">{{product.promotePrice|currency:'¥':2}}&nbsp;&nbsp;&nbsp;<span style="text-decoration: line-through;color: #5e5e5e;font-size:14px">{{product.originalPrice|currency:'￥':2}}</span></span>

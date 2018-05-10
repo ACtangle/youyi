@@ -47,7 +47,8 @@ public class AdminController {
             if (admin != null) {
                 session.setAttribute("admin",admin);
                 categoryController.list(model,page);
-                return "admin/listCategory";
+//                return "admin/listCategory";
+                return "redirect:/admin_category_list";
             } else {
                 request.setAttribute("message","用户名或密码错误");
                 request.getRequestDispatcher("adminLogin").forward(request,response);

@@ -7,7 +7,7 @@
 
 <div class="navitagorDiv">
 	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-		<img style="margin-left:10px;margin-right:0px" class="pull-left" src="img/site/tmallbuy.png" height="45px">
+		<img style="margin-left:10px;margin-right:0px" class="pull-left" src="../../../youyi/img/site/logo.png" height="45px">
 		<a class="navbar-brand" href="#nowhere">优易后台</a>
 		
 		<a class="navbar-brand" href="admin_category_list">分类管理</a>
