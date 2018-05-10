@@ -31,48 +31,62 @@
             return true;
         }
 
+        function a() {
+//            debugger
+            $("div.productReviewDiv").hide();
+            $("div.productDetailDiv").show();
+        }
 
-        $(function(){
-
-
-            $("a.productDetailTopReviewLink").click(function(){
-                $("div.productReviewDiv").show();
-                $("div.productDetailDiv").hide();
-            });
-            $("a.productReviewTopPartSelectedLink").click(function(){
-                $("div.productReviewDiv").hide();
-                $("div.productDetailDiv").show();
-            });
-
-            $("span.leaveMessageTextareaSpan").hide();
-            $("img.leaveMessageImg").click(function(){
-
-                $(this).hide();
-                $("span.leaveMessageTextareaSpan").show();
-                $("div.orderItemSumDiv").css("height","100px");
-            });
-
-            $("div#footer a[href$=#nowhere]").click(function(){
-                alert("模仿天猫的连接，并没有跳转到实际的页面");
-            });
+        function b() {
+//            debugger
+            $("div.productDetailDiv").hide();
+            $("div.productReviewDiv").show();
+        }
 
 
-            $("a.wangwanglink").click(function(){
-                alert("模仿旺旺的图标，并不会打开旺旺");
-            });
-            $("a.notImplementLink").click(function(){
-                alert("这个功能没做，蛤蛤~");
-            });
 
-
-        });
+//        $(function(){
+//            debugger
+//
+//            $("a.productDetailTopReviewLink").click(function(){
+//                $("div.productReviewDiv").show();
+//                $("div.productDetailDiv").hide();
+//            });
+//
+//            $("a.productReviewTopPartSelectedLink").click(function(){
+//                $("div.productReviewDiv").hide();
+//                $("div.productDetailDiv").show();
+//            });
+//
+//            $("span.leaveMessageTextareaSpan").hide();
+//            $("img.leaveMessageImg").click(function(){
+//
+//                $(this).hide();
+//                $("span.leaveMessageTextareaSpan").show();
+//                $("div.orderItemSumDiv").css("height","100px");
+//            });
+//
+//            $("div#footer a[href$=#nowhere]").click(function(){
+//                alert("模仿天猫的连接，并没有跳转到实际的页面");
+//            });
+//
+//
+//            $("a.wangwanglink").click(function(){
+//                alert("模仿旺旺的图标，并不会打开旺旺");
+//            });
+//            $("a.notImplementLink").click(function(){
+//                alert("这个功能没做，蛤蛤~");
+//            });
+//
+//
+//        });
 
     </script>
 </head>
 <body>
 
 </body>
-<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
-<script src="../js/angularJs/angular.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>-->
+<!--<script src="../js/angularJs/angular.js"></script>-->
+<!--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 </html>

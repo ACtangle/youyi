@@ -57,6 +57,10 @@ angular.module('cart',[])
     $scope.showOrderItems = function() {
         $http.post('showCart',{user:$scope.userData})
             .success(function(resp) {
+                if(resp.length == 0) {
+                    alert("您还未加入商品进购物车，请先加入购物车");
+                    location.href = $location.absUrl().replace("cart","home");
+                }
                 // $scope.cartCount = localStorage.getItem("cartCount");
                 for(var i=0 ;i<resp.length; i++) {
                     $scope.userOrderItems = resp;

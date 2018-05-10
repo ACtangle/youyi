@@ -7,26 +7,30 @@
 <body>
     <div class="productReviewDiv" >
         <div class="productReviewTopPart">
-            <a  href="#nowhere" class="productReviewTopPartSelectedLink">商品详情</a>
-            <a  href="#nowhere" class="selected">累计评价 <span class="productReviewTopReviewLinkNumber">{{product[0].reviewCount}}</span></a>
+            <a  href="#" onclick="a()" class="productReviewTopPartSelectedLink">商品详情</a>
+            <a  href="#" onclick="b()" class="productDetailTopReviewLink selected">累计评价 <span class="productReviewTopReviewLinkNumber">{{product[0].reviewCount}}</span></a>
         </div>
 
 
-        <div class="productReviewContentPart">
-            <c:forEach items="${reviews}" var="r">
-                <div class="productReviewItem">
+        <div class="productReviewContentPart" ng-repeat="r in reviews|limitTo:15">
+            <!--<c:forEach items="${reviews}" var="r">-->
+                <div class="productReviewItem" >
                     <div class="productReviewItemDesc">
                         <div class="productReviewItemContent">
-                            ${r.content }
+                            {{r.content}}
                         </div>
-                        <div class="productReviewItemDate"><fmt:formatDate value="${r.createDate}" pattern="yyyy-MM-dd"/></div>
+                        <div class="productReviewItemDate">
+                            <!--<fmt:formatDate value="${r.createDate}" pattern="yyyy-MM-dd"/>-->
+
+                            {{r.createDate|date:"yyyy-MM-dd"}}
+                        </div>
                     </div>
                     <div class="productReviewItemUserInfo">
-                        ${r.user.anonymousName}<span class="userInfoGrayPart">（匿名）</span>
+                        {{r.user.anonymousName}}<span class="userInfoGrayPart">（匿名）</span>
                     </div>
                     <div style="clear:both"></div>
                 </div>
-            </c:forEach>
+            <!--</c:forEach>-->
         </div>
 
     </div>

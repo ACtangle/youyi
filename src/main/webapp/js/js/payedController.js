@@ -82,7 +82,8 @@ angular.module('payed',[])
     //获取订单信息
     $scope.orderInfo = function () {
         $http.post("showOrder",{
-            "oid":$scope.oid
+            "oid":$scope.oid,
+            "userData":$scope.userData
         })
             .success(function (resp) {
                 $scope.orderInfo = resp;

@@ -24,7 +24,7 @@ angular.module('register',[])
                         // console.log($scope.userData);
                     }
                     else if (!resp) {
-                        alert("注册失败");
+                        alert("用户名已注册，请重新注册");
                         // console.log(resp);
                     }
                 })

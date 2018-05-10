@@ -29,7 +29,7 @@ angular.module('review',[])
     //评价
     $scope.reviews = {};
     //提交评价内容
-    $scope.contentsa = {};
+    $scope.content = {};
 
 
     //判断是否已经登录
@@ -100,22 +100,23 @@ angular.module('review',[])
             })
     }
     $scope.showReviewList();
-    
+
+    //评价商品
     $scope.enterReview = function () {
+
         $http.post('doReview',{
             "oid":$scope.oid,
             "pid":$scope.product.id,
-            "content":$scope.contentsa,
+            "content":$scope.content.con,
             "uid":$scope.userData.id
         })
             .success(function (resp) {
-                console.log($scope.content);
+                // console.log($scope.content);
                 alert("评价成功");
                 location.reload();
             })
             .error(function (resp) {
                 alert("失败");
-
             })
     }
 })

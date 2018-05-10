@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script>
+    var txt;
+    txt = document.getElementById('content').value; //获取textarea的值
+    console.log(txt);
+</script>
 <body>
 <div class="reviewDiv">
     <div class="reviewProductInfoDiv">
@@ -62,7 +67,7 @@
     </div>
 
     <!--<c:if test="${param.showonly==true}">-->
-        <div class="reviewDivlistReviews" ng-repeat="r in reviews">
+        <div class="reviewDivlistReviews" ng-repeat="r in reviews|limitTo:10">
             <!--<c:forEach items="${reviews}" var="r">-->
                 <div class="reviewDivlistReviewsEach">
                     <div class="reviewDate">
@@ -83,7 +88,7 @@
                 <table class="makeReviewTable">
                     <tr>
                         <td class="makeReviewTableFirstTD">评价商品</td>
-                        <td ><textarea name="content" placeholder="请输入评价" ng-model="contentsa"></textarea></td>
+                        <td ><textarea name="content" placeholder="请输入评价" ng-model="content.con" id="content"></textarea></td>
                     </tr>
                 </table>
                 <div class="makeReviewButtonDiv">

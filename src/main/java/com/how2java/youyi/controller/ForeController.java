@@ -415,12 +415,27 @@ public class ForeController {
         String requestString = userController.getRequestString(httpServletRequest);
         JSONObject json = JSONObject.fromObject(requestString);
         Order order = null;
+        User user = null;
+        OrderItem orderItem = null;
+        Product product = null;
         if (json.containsKey("oid")) {
             int oid = json.getInt("oid");
             order = orderService.get(oid);
             order.setStatus(OrderService.waitDelivery);
             order.setPayDate(new Date());
             orderService.update(order);
+            if(json.containsKey("userData")){
+                Gson gson = new Gson();
+                user = gson.fromJson(json.getString("userData"), User.class);
+                orderItemService.fill(order);
+                //减少库存
+                List<OrderItem> orderItems = order.getOrderItems();
+                for(int i =0;i<orderItems.size();i++) {
+                    orderItem = orderItems.get(i);
+                    product = orderItem.getProduct();
+                    product.setStock(product.getStock()-orderItem.getNumber());
+                }
+            }
         }
         return order;
     }
@@ -589,6 +604,26 @@ public class ForeController {
             flag = true;
         }
         return flag;
+    }
+
+    //获取商品评价
+    @RequestMapping(value="fore/getReview",method =  RequestMethod.POST)
+    @ResponseBody
+    public Object getReviews(HttpServletRequest httpServletRequest) throws Exception {
+        String requestString = userController.getRequestString(httpServletRequest);
+        JSONObject json = JSONObject.fromObject(requestString);
+        Product product = null;
+        List reviews = new ArrayList();
+        if(json.containsKey("pid")) {
+            int pid = json.getInt("pid");
+            product = productService.get(pid);
+            if(null != product) {
+                reviews = reviewService.list(product.getId());
+                productService.setSaleAndReviewNumber(product);
+            }
+        }
+
+        return reviews;
     }
 }
 

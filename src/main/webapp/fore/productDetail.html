@@ -7,8 +7,8 @@
 <body>
     <div class="productDetailDiv" >
         <div class="productDetailTopPart">
-            <a href="#nowhere" class="productDetailTopPartSelectedLink selected">商品详情</a>
-            <a href="#nowhere" class="productDetailTopReviewLink">累计评价 <span class="productDetailTopReviewLinkNumber">{{product[0].reviewCount}}</span> </a>
+            <a href="#" onclick="a()" class="productDetailTopPartSelectedLink selected" >商品详情</a>
+            <a href="#" onclick="b()" class="productDetailTopReviewLink" >累计评价 <span class="productDetailTopReviewLinkNumber">{{product[0].reviewCount}}</span> </a>
         </div>
 
 
@@ -16,9 +16,7 @@
             <div class="productParamter">产品参数：</div>
 
             <div class="productParamterList">
-                <!--<c:forEach items="${pvs}" var="pv">-->
-                    <!--<span>${pv.property.name}:  ${fn:substring(pv.value, 0, 10)} </span>-->
-                <!--</c:forEach>-->
+
                 <div ng-repeat="productProperty in product[1]">
                     <span>{{productProperty.property.name}}:{{productProperty.value}}</span>
                 </div>
@@ -27,9 +25,6 @@
         </div>
 
         <div class="productDetailImagesPart">
-            <!--<c:forEach items="${p.productDetailImages}" var="pi">-->
-                <!--<img src="../img/productDetail/${pi.id}.jpg">-->
-            <!--</c:forEach>-->
             <div ng-repeat="productDetailImage in product[0].productDetailImages">
                 <img src="../img/productDetail/{{productDetailImage.id}}.jpg">
             </div>

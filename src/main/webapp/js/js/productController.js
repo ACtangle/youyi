@@ -31,8 +31,8 @@ angular.module('product',[])
     $scope.tempdatas=[];
     //购物车数量
     $scope.cartCount = localStorage.getItem("cartCount");
-
-
+    $scope.reviews = [];
+$scope.isshow=false;
 
     //判断是否已经登录
     if(sessionStorage.getItem("name") != null && sessionStorage.getItem("password") !=null && sessionStorage.getItem("id") !=null )  {
@@ -148,4 +148,20 @@ angular.module('product',[])
     }
     $scope.showOrderItems();
 
+
+    //获取商品评价
+    $scope.getProductReview = function () {
+        $http.post('getReview',{
+            "pid":$scope.product.id
+        })
+            .success(function (resp) {
+                // alert("成功");
+                // console.log(resp);
+                $scope.reviews = resp;
+            })
+            .error(function (resp) {
+                alert("失败");
+            })
+    }
+    $scope.getProductReview();
 })

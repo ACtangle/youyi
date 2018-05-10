@@ -11,18 +11,34 @@
 </head>
 <body >
 
-    <div ng-include="'../fore/header.html'"></div>
-    <div ng-include="'../fore/top.html'"></div>
-    <div ng-include="'../fore/search.html'"></div>
+    <div ng-include="'header.html'"></div>
+    <div ng-include="'top.html'"></div>
+    <div ng-include="'search.html'"></div>
     <input type="hidden" ng-init="showProduct()">
-    <div ng-include="'../fore/productPage.html'"></div>
-    <div ng-include="'../fore/footer.html'"></div>
+    <div ng-include="'productPage.html'"></div>
+    <div ng-include="'footer.html'"></div>
 
 </body>
-<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
+<!--<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>-->
+<script src="../js/jquery/3.3.1/jquery-3.3.1.js"></script>
+<!--<script src="../js/bootstrap/3.3.6/bootstrap.js"></script>-->
 <script src="../js/angularJs/angular.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="../js/bootstrap.min.js"></script>-->
+<!--<script src="../js/bootstrap/3.3.6/bootstrap.min.js"></script>-->
+<script src="../js/bootstrap/3.3.6/bootstrap.js"></script>
+<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<!--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <script src="../js/js/productController.js"></script>
+<script>
 
+//    $(".productDetailTopPartSelectedLink").click(function () {
+//        debugger
+//        $(".productDetailTopReviewLink").removeClass("selected");
+//        this.addClass("selected");
+//    })
+//    $(".productDetailTopReviewLink").click(function () {
+//        $(".productDetailTopPartSelectedLink").removeClass("selected");
+//        this.addClass("selected");
+//    })
+</script>
 </html>

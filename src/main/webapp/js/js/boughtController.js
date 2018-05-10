@@ -78,6 +78,10 @@ angular.module('bought',[])
             "userData":$scope.userData
         })
             .success(function (resp) {
+                if(resp.length == 0) {
+                    alert("您还未有订单，请下单后查看");
+                    location.href = $location.absUrl().replace("bought","home");
+                }
                 $scope.orders = resp;
                 // console.log($scope.orders);
                 // alert("成功");
