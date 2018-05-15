@@ -81,6 +81,7 @@ angular.module('index',[])
                     // console.log("-------------------------------------------");
                 }
                 // console.log($scope.categoryss);
+                // console.log("我看到敬爱是空间的考拉时间的萨克的");
             })
             .error(function (resp) {
                 alert("失败");

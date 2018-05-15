@@ -10,7 +10,7 @@
 
     <input type="hidden" ng-init="show()">
     <div class="homepageCategoryProducts">
-        <div class="eachHomepageCategoryProducts" ng-repeat="category in categoryss|limitTo:6" >
+        <div class="eachHomepageCategoryProducts" ng-repeat="category in categoryss |limitTo:6" >
             <div class="left-mark"></div>
             <span class="categoryTitle" ng-bind="category.name"></span>
             <span><a href="category.html?cid={{category.id}}"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....查看更多</a></span>

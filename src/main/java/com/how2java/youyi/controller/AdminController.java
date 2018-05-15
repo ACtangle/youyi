@@ -57,6 +57,12 @@ public class AdminController {
         return null;
     }
 
+    @RequestMapping(value="admin_logout")
+    public String loggout(HttpSession session) {
+        session.setAttribute("admin",null);
+        return "admin/adminLogin";
+    }
+
 
 
 }

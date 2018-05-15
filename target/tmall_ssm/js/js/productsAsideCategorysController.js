@@ -18,7 +18,7 @@ angular.module('productsAsideCategorys',[])
 
                     }
                     // console.log($scope.categoryss);
-                    alert("成功");
+                    // alert("成功");
                 })
                 .error(function (resp) {
                     alert("失败");

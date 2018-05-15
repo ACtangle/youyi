@@ -16,20 +16,20 @@
     </script>
 </head>
 <body ng-controller="productsAsideCatrgorysCtrl">
-
 <input type="hidden" ng-init="show()" />
-<div class="productsAsideCategorys" ng-repeat="object in categoryss">
+<div class="productsAsideCategorys" ng-repeat="object in categoryss track by $index" id="{{object.id}}">
     <span ng-bind="object.name"></span>
-    <div ng-repeat="objectByRow in object.productsByRow" class="row show1">
-        <div ng-repeat="objectByRow in objectByRow" class="row show1">
-            <a href="foreproduct?pid?={{objectByRow.id}}">{{objectByRow.subTitle}}</a>
+    <div ng-repeat="objectByRows in object.productsByRow" class="row show1">
+        <div ng-repeat="objectByRow in objectByRows" class="row show1">
+            <a href="product.html?pid?={{objectByRow.id}}">{{objectByRow.subTitle}}</a>
         </div>
     </div>
 </div>
 
+
 </body>
 <script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
 <script src="../js/angularJs/angular.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <script src="../js/js/productsAsideCategorysController.js"></script>
 </html>

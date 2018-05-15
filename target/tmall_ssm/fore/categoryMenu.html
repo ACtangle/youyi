@@ -17,7 +17,7 @@
         <!--</div>-->
     <!--</c:forEach>-->
     <input type="hidden" ng-init="showCategorys()">
-    <div ng-repeat="object in categoryss" class="eachCategory">
+    <div ng-repeat="object in categoryss track by $index" class="eachCategory" id="{{object.id}} ">
         <span class="glyphicon glyphicon-link"></span>
         <a href="category.html?cid={{object.id}}" >{{object.name}}</a>
     </div>
