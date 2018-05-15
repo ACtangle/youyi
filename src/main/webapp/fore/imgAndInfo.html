@@ -138,16 +138,55 @@
             );
         });
 
+        $(function () {
+            var offset=$('#end').offset();
+
+            $(window).resize(site);
+            function site() {
+                offset=$('#end').offset();
+            }
+            $('.box').on('click','a',function () {
+                var addcar=$(this);
+                var img=addcar.parent().find('img').attr('src');
+                var flyer=$('<img class="u-flyer" src="'+img+'">');
+                console.log(offset);
+                flyer.fly({
+                    start:{
+                        left:event.pageX,
+                        top:event.pageY
+                    },
+                    end:{
+                        left:offset.left,
+                        top:offset.top,
+                        width:0,
+                        height:0
+                    }
+
+                })
+            })
+        })
+
     </script>
+
+    <style>
+        .box{
+            width: 198px;
+            height: 320px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            margin-top:-40px;
+        }
+        .box h4{line-height:32px; font-size:14px; color:#f30;font-weight:500}
+        .box h4 span{font-size:20px}
+        .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;}
+
+    </style>
 </head>
 <body>
     <div class="imgAndInfo">
         <div class="imgInimgAndInfo">
             <img src="../img/productSingle/{{product[0].firstProductImage.id}}.jpg" class="bigImg">
             <div class="smallImageDiv">
-                <!--<c:forEach items="${p.productSingleImages}" var="pi">-->
-                    <!--<img src="../img/productSingle_small/${pi.id}.jpg" bigImageURL="../img/productSingle/${pi.id}.jpg" class="smallImage">-->
-                <!--</c:forEach>-->
                 <span ng-repeat="productSingleImage in product[0].productSingleImages |limitTo:5">
                     <img src="../img/productSingle_small/{{productSingleImage.id}}.jpg" bigImageUrl="../img/productSingle/{{productSingleImage.id}}.jpg" class="smallImage">
                 </span>
@@ -239,9 +278,13 @@
             </span>
             </div>
 
-            <div class="buyDiv">
-                <a class="buyLink" ng-click="jump(product[0]);"><button class="buyButton">立即购买</button></a>
-                <a class="addCartLink" ng-click="addCart(product[0]);"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
+            <div class="buyDiv" style="padding-left: 50px;">
+                <a class="buyLink" ng-click="jump(product[0]);"><button style="margin-left:200px;" class="buyButton">立即购买</button></a>
+                <!--<a class="addCartLink" ng-click="addCart(product[0]);"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>-->
+                <div class="box" style="height: 50px;border: hidden;">
+                    <img style="display: none"  src="../img/productSingle/{{product[0].firstProductImage.id}}.jpg" width="180" height="180">
+                    <a  class="addCartLink" ng-click="addCart(product[0]);"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
+                </div>
             </div>
         </div>
 

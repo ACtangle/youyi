@@ -8,30 +8,45 @@ angular.module('register',[])
     //获取地址栏的绝对路径
     var absUrl = $location.absUrl();
     //页面跳转路径
-    var locationUrl = "";
+    // var locationUrl = "";
+    var locationUrl = absUrl.replace("userRegister", "userLogin");
+    //信息
+    $scope.message = "";
 
     $scope.register = function () {
         if($scope.registerForm.$invalid){
-            alert("请检查您的信息");
+            // alert("请检查您的信息");
+            setTimeout("location.reload();",1700);
         }else {
             $http.post("addUser", {data: $scope.userData})
                 .success(function (resp) {
+
                     if (resp) {
-                        locationUrl = absUrl.replace("userRegister", "userLogin");
+                        setTimeout("jump()",1700);
                         alert("注册成功，点击确定返回登录");
-                        location.href = locationUrl;
+                        // $scope.message = "注册成功";
+                        // location.href = locationUrl;
+
                         // console.log(resp);
                         // console.log($scope.userData);
                     }
                     else if (!resp) {
+                        setTimeout("location.reload();",1700);
                         alert("用户名已注册，请重新注册");
                         // console.log(resp);
+
+                        // alert("该用户已被注册，请重新注册");
                     }
                 })
                 .error(function (resp) {
-                    alert("用户名已被注册");
+                    alert("其他错误");
+                    setTimeout("location.reload();",1700);
                 })
         }
+    }
+
+    jump = function () {
+        location.href = locationUrl;
     }
 })
 //两次密码确认识别
@@ -51,4 +66,6 @@ angular.module('register',[])
         })
     }
     return o;
+
+
 })

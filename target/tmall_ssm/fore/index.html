@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery魅族官网导航加幻灯片代码 - 站长素材</title>
+
+<link rel="stylesheet" href="../css/fore/reset.css">
+<link rel="stylesheet" href="../css/fore/index.css">
+
+</head>
+<body>
+
+<div class="wrapper" id="wrapper">
+
+
+
+</div>
+
+<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+<script src="../js/fore/slider.js"></script>
+<script src="../js/fore/navChange.js"></script>
+<script>
+$(function () {
+
+  var slider1 = new Slider();
+  var doc_h = $(document.body).width();
+
+  slider1.inital('sliderBox', {
+	slider_num: 4,
+	w: doc_h,
+	h: 760
+  });
+});
+
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

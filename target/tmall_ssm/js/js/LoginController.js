@@ -56,15 +56,22 @@ angular.module('login',[])
                     sessionStorage.setItem("name",$scope.userData.name);
                     sessionStorage.setItem("password",$scope.userData.password);
                     // $scope.flag = false;
-                    alert("登录成功");
-                    location.href = locationUrl;
+                    // alert("登录成功");
+                    setTimeout("jump();",1800);
+                    // location.href = locationUrl;
                     // document.getElementById("name").innerHTML = "欢迎" + sessionStorage.setItem("name",$scope.userData.name) + "登录";
                 }else{
                     alert("用户名或密码错误");
+                    setTimeout("location.reload();",1200);
                 }
             })
             .error(function (resp) {
                     alert("用户名或密码错误");
+                setTimeout("location.reload();",1200);
             })
+    }
+
+    jump = function () {
+        location.href = locationUrl;
     }
 })

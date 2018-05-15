@@ -5,9 +5,31 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+
+    <style>
+
+        .m-sidebar{
+            position: fixed;
+            top:0;
+            right: 0;
+            background: #000000;
+            z-index: 2000;
+            width: 35px;
+            height: 100%;
+            font-size: 12px;
+            color: #fff;
+        }
+        .cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;margin: 200px 0}
+        .cart span{display:block;width:20px;margin:0 auto;}
+
+    </style>
+
+
+
+
 </head>
 <body ng-controller="topCtrl">
-　<nav class="top ">
+　<nav class="top " >
     <a href="home.html?id={{userData.id}}">
         <span style="color:#0e0e0e;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
         优易首页
@@ -17,7 +39,7 @@
     <span ng-if="!flag"><a href="#">欢迎,{{userData.name}}</a></span>
     <span ng-if="!flag"><a href="home.html" ng-click="loggout()">退出登录</a> </span>
     <span><a href="userRegister.html">免费注册</a></span>
-    <span class="pull-right">
+    <span class="pull-right" style="margin-right: 50px;">
 			<a href="bought.html">我的订单</a>
 			<a href="cart.html">
 			<span style="color:#0e0e0e;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor" ></span>
@@ -28,9 +50,38 @@
 </nav>
 
 
+<div class="m-sidebar" ng-if="!flag">
+    <div class="cart">
+        <i id="end"></i>
+        <span style="font-size: 15px"><a href="cart.html"> 购物车 </a></span>
+        <strong style="color: #b00000" ng-if="!flag">{{cartCount}}件</strong>
+    </div>
+</div>
+
+
 </body>
 <!--<script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>-->
 <!--<script src="../js/angularJs/angular.js"></script>-->
 <!--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <!--<script src="../js/js/topController.js"></script>-->
+
+<!--<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>-->
+
+<script type="text/javascript" src="../js/jquery/jquery.goup.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $.goup({
+            trigger: 100,
+            bottomOffset: 150,
+            locationOffset: 100,
+            title: '回到顶部',
+            titleAsText: true
+        });
+    });
+
+</script>
+
+
 </html>

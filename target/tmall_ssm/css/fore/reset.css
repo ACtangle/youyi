@@ -1,0 +1,28 @@
+html, body, div, span, h1, h2, h3, p, em, small, strong, dl, dt, dd, ol, ul, li {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
+em, strong, i {
+  font-style: normal;
+}
+h1, h2, h3 {
+  font-weight: normal;
+}
+body { line-height: 1; font-size: 14px; font-family: "Microsoft Yahei"; color: #333; background-color: #2D2D2D; }
+ul, ol {
+  list-style: none;
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+/*input, button {*/
+  /*padding: 0;*/
+  /*border: none;*/
+  /*outline: none;*/
+  /*background: none;*/
+/*}*/
+img {
+  vertical-align: top;
+}

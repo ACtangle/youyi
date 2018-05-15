@@ -45,7 +45,7 @@ angular.module('index',[])
     $scope.showCategory = function () {
         $http.get("showCategorys")
             .success(function (resp) {
-                for(var i=0;i<4;i++){
+                for(var i=0;i<7;i++){
                     // $scope.categorys.ids[i] = resp[i].id;
                     // $scope.categorys.names[i] = resp[i].name;
                     $scope.categorys[i] = resp[i];

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery/3.3.1/jquery-3.3.1.js"></script>
+    <script src="../js/jquery/jquery.fly.js" ></script>
+    <!-- Load local lib and tests. -->
+    <!--<script src="../js/jquery/fly.js"></script>-->
+
+    <style>
+        .box{
+            width: 198px;
+            height: 320px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .box h4{line-height:32px; font-size:14px; color:#f30;font-weight:500}
+        .box h4 span{font-size:20px}
+        .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;}
+        .m-sidebar{
+            position: fixed;
+            top:0;
+            right: 0;
+            background: #000000;
+            z-index: 2000;
+            width: 35px;
+            height: 100%;
+            font-size: 12px;
+            color: #fff;
+        }
+        .cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;margin: 200px 0}
+        .cart span{display:block;width:20px;margin:0 auto;}
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+    <img src="../img/site/logo.png" width="180" height="180">
+    <h4>￥<span>300</span></h4>
+    <a href="#" class="button orange addcar">加入购物车</a>
+</div>
+
+<div class="m-sidebar">
+    <div class="cart">
+        <i id="end"></i>
+        <span>购物车</span>
+    </div>
+</div>
+
+</body>
+
+<script>
+    $(function () {
+        var offset=$('#end').offset();
+
+        $(window).resize(site);
+        function site() {
+            offset=$('#end').offset();
+        }
+        $('.box').on('click','a',function () {
+            var addcar=$(this);
+            var img=addcar.parent().find('img').attr('src');
+            var flyer=$('<img class="u-flyer" src="'+img+'">');
+            console.log(offset)
+            flyer.fly({
+                start:{
+                    left:event.pageX,
+                    top:event.pageY
+                },
+                end:{
+                    left:offset.left,
+                    top:offset.top,
+                    width:0,
+                    height:0
+                }
+
+            })
+        })
+    })
+</script>
+</html>

@@ -172,6 +172,7 @@
                                         <button  class="orderListItemReview">评价</button>
                                     </a>
                                 <!--</ng-if>-->
+                                    <span ng-if="order.status!='waitConfirm' && order.status!='waitPay' && order.status!='waitDelivery' &&order.status!='waitReview'">已评价</span>
                             </td>
 
                         <!--</c:if>-->

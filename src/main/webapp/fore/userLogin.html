@@ -8,6 +8,8 @@
     <title>用户登录</title>
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/fore/base.css" />
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
     <style>
         .loginBackgroundImg{
             padding-top:30px;
@@ -51,7 +53,15 @@
                 <a class="notImplementLink" href="home.html">优易首页</a>
                 <a ng-click="toRegister()" class="pull-right">免费注册</a>
             </div>
-            <input type="submit" class="form-control" value="登录" ng-click="login()" />
+            <!--<input type="submit" class="form-control" value="登录" ng-click="login()" />-->
+                <!--<div class="grid__item theme-2">-->
+                    <!--<button class="action"><svg class="icon icon&#45;&#45;rewind"><use xlink:href="#icon-rewind"></use></svg></button>-->
+                    <!--<button class="particles-button" ng-click="login()">登录</button>-->
+                <!--</div>-->
+                <div class="grid__item theme-7">
+                    <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+                    <button class="particles-button" ng-click="login()">Sign&nbsp;&nbsp;In</button>
+                </div>
             <!--<input type="submit" class="form-control" value="注册" ng-click="toRegister()" />-->
             </div>
         </form>
@@ -61,4 +71,8 @@
 <script src="../js/angularJs/angular.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="../js/js/LoginController.js"></script>
+
+<script src='../js/fore/anime.min.js'></script>
+<script src='../js/fore/particles.js'></script>
+<script src='../js/fore/demo.js'></script>
 </html>

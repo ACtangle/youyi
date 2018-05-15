@@ -120,9 +120,9 @@ $scope.isshow=false;
                 "num":$scope.num
             }
             ).success(function (resp) {
-                alert("添加购物车成功");
+                // alert("添加购物车成功");
                 // window.location.href= "cart.html";
-                location.reload();
+                setTimeout("location.reload();",1600);
             }).error(function (resp) {
                 alert("添加失败");
             })

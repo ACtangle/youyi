@@ -5,16 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<!--<c:if test="${empty param.categorycount}">-->
-    <!--<c:set var="categorycount" scope="page" value="100"/>-->
-<!--</c:if>-->
-
-<!--<c:if test="${!empty param.categorycount}">-->
-    <!--<c:set var="categorycount" scope="page" value="${param.categorycount}"/>-->
-<!--</c:if>-->
 <div class="categoryProducts" >
-    <!--<c:forEach items="${c.products}" var="p" varStatus="stc">-->
-        <!--<c:if test="${stc.count<=categorycount}">-->
         <div ng-repeat="product in category.products|limitTo:20">
             <div class="productUnit" price="{{product.promotePrice}}">
                 <div class="productUnitFrame">
@@ -23,18 +14,13 @@
                     </a>
                     <span class="productPrice">{{product.promotePrice|currency:'¥':2}}</span>
                     <a class="productLink" href="product.html?pid={{product.id}}">
-                        <span>{{product.name}}</span><br><span>{{product.subTitle}}</span>
+                        <span>{{product.name}}{{product.subTitle}}</span>
                     </a>
-                    <!--<span>&nbsp;</span>-->
-                    <a  class="tmallLink" href="product.html?pid={{product.id}}" style="text-align: right">优易专卖</a>
-
+                    <a  class="tmallLink" href="product.html?pid={{product.id}}" style="text-align: left">优易专卖</a>
                     <div class="show1 productInfo">
                         <span class="monthDeal ">月成交 <span class="productDealNumber">{{product.saleCount}}笔</span></span>
                         <span class="productReview">评价<span class="productReviewNumber">{{product.reviewCount}}</span></span>
                         <span class="wangwang">
-					<!--<a class="wangwanglink" href="#nowhere">-->
-						<!--<img src="../img/site/wangwang.png">-->
-					<!--</a>-->
 					</span>
                     </div>
                 </div>

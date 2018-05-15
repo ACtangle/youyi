@@ -5,16 +5,19 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap/3.3.6/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../css/fore/style.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fore/reset.css" />
+    <link rel="stylesheet" href="../css/fore/index.css" />
 </head>
 <body>
 <div id="carousel-of-product"  class="carousel-of-product carousel slide1" data-ride="carousel">
+<!--</div>-->
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-of-product" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-of-product" data-slide-to="1"></li>
-        <li data-target="#carousel-of-product" data-slide-to="2"></li>
-        <li data-target="#carousel-of-product" data-slide-to="3"></li>
-    </ol>
+    <!--<ol class="carousel-indicators">-->
+        <!--<li data-target="#carousel-of-product" data-slide-to="0" class="active"></li>-->
+        <!--<li data-target="#carousel-of-product" data-slide-to="1"></li>-->
+        <!--<li data-target="#carousel-of-product" data-slide-to="2"></li>-->
+        <!--<li data-target="#carousel-of-product" data-slide-to="3"></li>-->
+    <!--</ol>-->
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
@@ -31,6 +34,9 @@
         <div class="item">
             <img  class="carouselImage" src="../img/lunbo/4.jpg" >
         </div>
+    </div>
+</div>
+    <div class="wrapper" id="wrapper">
 
     </div>
 
@@ -44,9 +50,24 @@
 
     <!--   </a> -->
 
-</div>
+<!--</div>-->
 </body>
 <script src="../js/jquery/3.3.1/jquery-3.3.1.min.js" ></script>
 <script src="../js/angularJs/angular.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+
+        var slider1 = new Slider();
+        var doc_h = $(document.body).width();
+
+        slider1.inital('sliderBox', {
+            slider_num: 4,
+            w: doc_h,
+            h: 760
+        });
+    });
+
+</script>
 </html>
