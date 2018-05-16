@@ -211,6 +211,7 @@
 .slider-item {
   float: left;
   cursor: default;
+  /*width: 2560px;*/
 }
 
 .slider-box .btn-box {

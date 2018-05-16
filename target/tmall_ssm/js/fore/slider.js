@@ -185,7 +185,7 @@ Slider.prototype = {
     var btnStr = '';
 
     for (var i = 0; i < this.settings.slider_num; i ++) {
-      imgStr += '<a href="javascript:;" class="slider-item" style=" background: url(../../youyi/img/lunbo/bg'+(i + 1)+'.png) no-repeat center;"></a>';
+      imgStr += '<a href="javascript:;" class="slider-item" style=" background: url(../../youyi/img/lunbo/bg'+(i + 1)+'.jpg) no-repeat center;"></a>';
       btnStr += '<a href="javascript:;" class="btn-item"></a>';
     }
 

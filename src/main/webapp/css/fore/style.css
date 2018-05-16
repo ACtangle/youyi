@@ -100,7 +100,6 @@ div.carouselBackgroundDiv{
 	background-color: #E8E8E8;
 	position: absolute;
 	top:36px;
-
 	z-index:-1;
 
 }
@@ -125,7 +124,7 @@ div.categoryWithCarousel div.categoryMenu {
 	/* 	padding-bottom:10px; */
 	margin-left: 20px;
 	position: absolute;
-	left: 420px;
+	left: 180px;
 	top: 0;
 	z-index: 1;
 }
@@ -193,7 +192,7 @@ div.categoryWithCarousel div.head {
 	font-size: 16px;
 	font-weight: bold;
 	color: white;
-	margin-left: 440px;
+	margin-left: 200px;
 	display: inline-block;
 }
 

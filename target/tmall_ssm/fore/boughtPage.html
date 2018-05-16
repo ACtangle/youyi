@@ -115,7 +115,7 @@
 
                     </td>
                     <td class="orderItemDeleteTD">
-                        <a class="deleteOrderLink" id="{{order.id}}" ng-click="deleteOrder(order.id)" >
+                        <a class="deleteOrderLink" id="{{order.id}}" ng-click="deleteOrder(order.id)" ng-if="order.status!='waitConfirm' && order.status!='waitDelivery' &&order.status!='waitReview'">
                             <span  class="orderListItemDelete glyphicon glyphicon-trash"></span>
                         </a>
 
