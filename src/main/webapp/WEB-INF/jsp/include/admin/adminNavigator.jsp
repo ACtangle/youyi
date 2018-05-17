@@ -13,7 +13,7 @@
 		<a class="navbar-brand" href="admin_category_list">分类管理</a>
 		<a class="navbar-brand" href="admin_user_list">用户管理</a>
 		<a class="navbar-brand" href="admin_order_list">订单管理</a>
-
+        <a class="navbar-brand" href="adminPasswordUpdate">修改密码</a>
 		<a class="navbar-brand" href="admin_logout">退出登录</a>
 	</nav>
 </div>

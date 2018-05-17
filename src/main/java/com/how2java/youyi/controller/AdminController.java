@@ -37,6 +37,11 @@ public class AdminController {
         return "admin/adminLogin";
     }
 
+    @RequestMapping("adminPasswordUpdate")
+    public String displayAdminUpdate() {
+        return "admin/adminUpdate";
+    }
+
     @RequestMapping(value="admin_login",method=RequestMethod.POST)
     public String login(String username, String password, Model model, HttpSession session, Page page, HttpServletRequest request , HttpServletResponse response) throws Exception{
         Admin admin  = new Admin();
@@ -64,5 +69,20 @@ public class AdminController {
     }
 
 
+    @RequestMapping(value="admin_password_update",method = RequestMethod.POST)
+    public String updatePassword(String newpassword,Model model,HttpSession session) throws Exception{
+        Admin admin = null;
+        if( null!=newpassword) {
+            admin = (Admin) session.getAttribute("admin");
+//            if(password != admin.getPassword()) {
+//                model.addAttribute("message","原密码错误");
+//            }
+            admin.setPassword(newpassword);
+            adminService.updatePassword(admin);
+            session.setAttribute("admin",null);
+        }
+
+        return "admin/adminLogin";
+    }
 
 }

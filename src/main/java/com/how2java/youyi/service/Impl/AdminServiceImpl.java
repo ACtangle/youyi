@@ -23,4 +23,9 @@ public class AdminServiceImpl implements AdminService{
     public Admin get(String username,String password) {
         return adminMapper.selectByUsername(username,password);
     }
+
+    @Override
+    public void updatePassword(Admin admin) {
+        adminMapper.updateByPrimaryKeySelective(admin);
+    }
 }
