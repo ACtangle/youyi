@@ -62,6 +62,7 @@ public class AdminController {
         return null;
     }
 
+    //管理员退出登录
     @RequestMapping(value="admin_logout")
     public String loggout(HttpSession session) {
         session.setAttribute("admin",null);

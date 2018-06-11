@@ -88,7 +88,7 @@ angular.module('payed',[])
             .success(function (resp) {
                 $scope.orderInfo = resp;
                 console.log($scope.orderInfo);
-                alert("成功");
+                // alert("成功");
             })
             .error(function (resp) {
                 alert("失败");

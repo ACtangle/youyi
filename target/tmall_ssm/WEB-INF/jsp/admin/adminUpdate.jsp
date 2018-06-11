@@ -96,7 +96,7 @@
                         <div class="form-top-left">
                             <h3>Update password</h3>
                             <p>Enter your before-password and enter new password to update your password:</p>
-                            <p>Or you can return to <a href="adminLogin">Login Page</a></p>
+                            <p>Or you can return to <a href="admin_category_list">Youyi Manage System</a></p>
                         </div>
                         <div class="form-top-right">
                             <i class="fa fa-lock"></i>
